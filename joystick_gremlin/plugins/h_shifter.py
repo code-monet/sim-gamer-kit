@@ -43,10 +43,10 @@ axes_are_self_centering = BoolVariable(
         "Set True if the axes are self-centering with a spring, "
         "False if they don't return to neutral without user input"
     ),
-    False,
+    True,
 )
 
-# Physical inputs - the joystick axes and a button to go to neutral.
+# Physical inputs - the joystick axes (6 gears) and buttons to go to neutral and reverse.
 btn_neutral = PhysicalInputVariable(
     "Neutral",
     "Button to set gear to neutral. Needed for self-centering axes.",
@@ -131,17 +131,12 @@ def update_gear(vjoy):
             plugin_state.current_gear = Gear.GEAR_5
         elif x_axis > 0.9 and y_axis > 0.9:
             plugin_state.current_gear = Gear.GEAR_6
-    util.log(f"Gear {plugin_state.current_gear}")
+    # util.log(f"Gear {plugin_state.current_gear}")
     for gear, gear_button in GEAR_BUTTONS.items():
         device = vjoy[gear_button.value["device_id"]]
         device.button(gear_button.value["input_id"]).is_pressed = (
             gear == plugin_state.current_gear
         )
-
-
-def set_state(vjoy):
-    device = vjoy[gear_1.value["device_id"]]
-    device.button(gear_1.value["input_id"]).is_prssed = False
 
 
 # Physical input handlers.
