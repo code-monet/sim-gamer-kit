@@ -112,6 +112,8 @@ plugin_state = PluginState()
 
 def update_gear(vjoy):
     global plugin_state
+    # We want to indicate "neutral" if we are about to change gears.
+    approaching_gear = None
     if plugin_state.neutral_pressed:
         plugin_state.current_gear = Gear.GEAR_N
     elif plugin_state.reverse_pressed:
@@ -119,19 +121,40 @@ def update_gear(vjoy):
     else:
         x_axis = plugin_state.x_pos
         y_axis = plugin_state.y_pos
-        if x_axis < -0.9 and y_axis < -0.9:
-            plugin_state.current_gear = Gear.GEAR_1
-        elif x_axis < -0.9 and y_axis > 0.9:
-            plugin_state.current_gear = Gear.GEAR_2
-        elif -0.25 < x_axis < 0.25 and y_axis < -0.9:
-            plugin_state.current_gear = Gear.GEAR_3
-        elif -0.25 < x_axis < 0.25 and y_axis > 0.9:
-            plugin_state.current_gear = Gear.GEAR_4
-        elif x_axis > 0.9 and y_axis < -0.9:
-            plugin_state.current_gear = Gear.GEAR_5
-        elif x_axis > 0.9 and y_axis > 0.9:
-            plugin_state.current_gear = Gear.GEAR_6
+        # We want to indicate "neutral" if we are about to change gears.
+        approaching_gear = None
+        # current_gear is only updated when in a gear zone.
+        # This way it doesn't reset to neutral on its own.
+        if x_axis < -0.9:
+            if y_axis < -0.9:
+              plugin_state.current_gear = Gear.GEAR_1
+            elif y_axis < -0.7:
+                approaching_gear = Gear.GEAR_1
+            elif y_axis > 0.9:
+              plugin_state.current_gear = Gear.GEAR_2
+            elif y_axis > 0.7:
+                approaching_gear = Gear.GEAR_2
+        elif -0.25 < x_axis < 0.25:
+            if y_axis < -0.9:
+                plugin_state.current_gear = Gear.GEAR_3
+            elif y_axis < -0.7:
+                approaching_gear = Gear.GEAR_3
+            elif y_axis > 0.9:
+                plugin_state.current_gear = Gear.GEAR_4
+            elif y_axis > 0.7:
+                approaching_gear = Gear.GEAR_4
+        elif x_axis > 0.9:
+            if y_axis < -0.9:
+                plugin_state.current_gear = Gear.GEAR_5
+            elif y_axis < -0.7:
+                approaching_gear = Gear.GEAR_5
+            elif y_axis > 0.9:
+                plugin_state.current_gear = Gear.GEAR_6
+            elif y_axis > 0.7:
+                approaching_gear = Gear.GEAR_6
     # util.log(f"Gear {plugin_state.current_gear}")
+    if approaching_gear is not None and approaching_gear != plugin_state.current_gear:
+        plugin_state.current_gear = Gear.GEAR_N
     for gear, gear_button in GEAR_BUTTONS.items():
         device = vjoy[gear_button.value["device_id"]]
         device.button(gear_button.value["input_id"]).is_pressed = (
