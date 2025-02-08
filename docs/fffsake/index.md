@@ -48,11 +48,24 @@ from the vJoy device (coming from the video game) and writing them to your physi
 FFB capable device. In this process, it can also fix various force
 feedback issues and allow some amount of tweaking; see the Features section later.
 
+## Why Joystick Gremlin?
+
+While there are other applications with similar functionality, feeding vJoy with
+inputs from DirectInput devices, none of them appear to be maintained any more.
+Joystick Gremlin is actively being developed; we will be using the older but stable
+R13 version.
+
+Support could be added for other vJoy feeders, especially if someone is willing to
+help integrate FFFSake as a DLL or Python module. Please get in touch via GitHub
+Discussions.
+
 ## Setup
+
+Budget about 15-45 minutes for this one-time setup.
 
 > TODO: Add screenshot and links
 
-FFFSake is currently offered as a (Python) plugin for Joystick Gremlin.
+> FFFSake is currently offered as a (Python) plugin for Joystick Gremlin.
 If you would like to integrate FFFSake into your application as a DLL,
 please open a GitHub ticket.
 
@@ -64,7 +77,10 @@ download them all:
     [Brunner Innovation's fork on GitHub](https://github.com/BrunnerInnovation/vJoy/releases). Download both the setup executable as well as the SDK zip archive.
 2.  [Joystick Gremlin](https://whitemagic.github.io/JoystickGremlin/)
 3.  (Strongly Recommended) [HidHide](https://github.com/nefarius/HidHide/releases),
-    a kernel-mode filter driver to hide physical devices from games.
+    a kernel-mode filter driver to hide physical devices from games. You
+    will probably have a lot of trouble configuring your game to use vJoy,
+    or using FFFSake, if you don't hide the physical device behind vJoy
+    from the game. HidHide is the best option, at the time of this writing.
 
 Install and configure these; a nice detailed guide is available in the
 Joystick Gremlin link. Short version:
@@ -72,32 +88,52 @@ Joystick Gremlin link. Short version:
 1.  Install vJoy and reboot.
 2.  Install HidHide and reboot.
 3.  Install Joystic Gremlin, or use the "portable" version.
+    1.   Joystick Gremlin ships with support for an older version of vJoy, not
+         the one we want to use. First, navigate to the directory where you have
+         installed/extraced Joystick Gremlin. Look for a file named
+         `vJoyInterface.dll`, rename it to something like `vJoyInterface.old.dll`.
+    2.   From the vJoy SDK zip archive you downloaded earlier, extract
+         `SDK/lib/x64/vJoyInterface.dll` to the above path, taking the place of
+         the original DLL that Gremlin shipped with.
+         1.   This assumes you're on a 64-bit machine (most users). If you know
+              you're on a 32-bit machine, use the file at
+              `SDK/lib/x86/vJoyInterface.dll`.
+    3.   Launch Joystick Gremlin and ensure it starts. If it doesn't, you
+         you probably picked the wrong `vJoyInterface.dll` file in the prior
+         step - try the other one.
+    4.   Close Joystick Gremlin for the next step.
 4.  Launch the vJoy Control Panel from the Start Menu and configure it. The
-    recommendation on Joystick Gremlin is a bit outdated, instead, I suggest
-    having it match the screenshot below.
-5.  Launch and configure Joystick Gremlin. Suggestion for new users:
+    recommendation on the Joystick Gremlin page is a bit outdated; instead,
+    I suggest having it match the screenshot below.
+5.  Launch and
+    [configure Joystick Gremlin](https://whitemagic.github.io/JoystickGremlin/quickstart/).
+    Suggestion for new users:
     1.   Verify that your plugged in physical device shows up; switch to
          that tab. From the `Actions` menu, create a 1:1 mapping. Scroll down
          the list and verify that a sensible mapping was created (usually works
          as long as you start with a clean slate i.e. zero existing mappings).
     2.   Switch to the plugins tab. Use the `Add plugin` button and browse to
-         the `fffsake.py` (not `fffsake.pyd`!) file.
+         the `fffsake_gremlin_plugin.py` (not `fffsake.pyd`!) file.
     3.   Once the plugin has been added, from the `Output Device` dropdown in
          plugin configuration, select your FFB capable device. Most
          people would have exactly one such device.
     4.   Select either the `forwarding` or the `reducing` engine. See section
-         below for details. If you're not sure, start with the `reducing` engine.
+         below for details. If you're not sure, start with the `reducing` engine
+         if using a wheel and `forwarding` if using a joystick.
     5.   Save the profile.
-6.  Launch and configure HidHide:
+    6.   Close Joystick Gremlin for the next step.
+6.  Launch and
+    [configure HidHide](https://github.com/nefarius/HidHide?tab=readme-ov-file#user-guide):
     1.   Decide if you want to use list all the games you want to use with vJoy
          (**allowlist**, "Inverse cloak" unchecked), or list all the games and
          applications you won't be using with vJoy (**blocklist**,
-         "Inverse cloak" checked). I use the former because that list is shorter
+         "Inverse cloak" checked). I use the allowlist because that list is shorter
          for me.
     2.   Add paths to all the applications that belong to the above list. For
          games with launchers, you want the game binary path, not the launcher.
          I typically launch the application, and then use the Windows Task
-         Manager to find the path of the application `.exe` file.
+         Manager (launch via Ctrl + Shift + Esc) to find the path of the
+         application `.exe` file.
          1.   If using an **allowlist**, make sure to add paths to Joystick
               Gremlin as well as the control panel/configuration application
               for your physical device.
@@ -105,24 +141,26 @@ Joystick Gremlin link. Short version:
          in to show up) that you want to use through Joystick Gremlin.
     4.   Check "Enable filtering" and unplug-replug (or power off/on) the
          device.
-7.  Go back to Joystick Gremlin, ensure that your physical device is still there.
+7.  Launch Joystick Gremlin, ensure that your physical device is still there.
     If not, double check that you added the Joystick Gremlin application path
-    correctly (for your chosen scheme, allowlist or blocklist). Then click on
+    correctly (if you're using the allowlist approach) in HidHide. Then click on
     "Enable" button.
 
-This is a lot of setup, if you made it this far, congratulations! You've
+This is a lot of setup; if you made it this far, congratulations! You've
 enabled some really powerful tools for your sim gaming journey.
 
 ## Usage
 
-Once you've completed the above setup, future setup involves:
+Once you've completed the above one-time setup, future usage involves:
 
 1.  Launching HidHide and ensuring the filter is enabled.
 2.  Launch Joystick Gremlin and load your desired profile. Click on "Enable".
 
+I suggest starting with a single Joystick Gremlin profile and then branching out
+to more as you gain experience with this tool.
+
 At this point you can launch your game and configure it for vJoy. You should be
-able to select and configure it inside the game as you would any other
-device.
+able to select and configure it inside the game as you would any other device.
 
 ### FFFSake Features
 
@@ -130,10 +168,13 @@ device.
 
 Both engines have the following features:
 
-1.  Incorrect rotation of effects (but also see
+1.  Fix incorrect rotation of effects on racing wheels (but see also:
     [Indirect Input](../indirect_input/index.md))
-2.  FFB commands issued faster than the device can handle them, usually leading
-    to a drop in FPS in game when using a FFB device.
+2.  "Slip" FFB commands when they are issued faster than the device can handle them,
+    usually leading to a drop in FPS in game when using a FFB device.
+    1.   On slower CPUs, the `forwarding` engine is currently better for this. With
+         planned future optimizations, the `reducing` engine will always be the
+         superior option for this feature.
 3.  Setting gain for individual hardware effects
     (NOTE: targeted for a future release).
 
@@ -161,19 +202,23 @@ them; if you are, please in touch via
 [GitHub Discussions](https://github.com/code-monet/sim-gamer-kit/discussions)
 
 1.  Only one vJoy device is supported.
-2.  Only one FFB axis devices are supported in the reducing engine. In other
+2.  Only single FFB axis devices are supported in the `reducing` engine. In other
     words, it's only expected to be used for racing wheels. I don't know of any
     FFB joysticks that have mistakes in their hardware effects implementation.
 
-The following known issues will be addressed in a future release:
+The following known issues and planned features will be addressed
+in a future release:
 
-1.  High CPU usage, especially from the reducing engine.
-2.  Only one FFB axis devices are supported in the forwarding engine. In other
+1.  Decrease CPU usage, especially for the `reducing` engine.
+2.  Only single FFB axis devices are supported in the `forwarding` engine. In other
     words, it's only expected to be used for racing wheels. It's relatively easy to
     add support for (two axes) FFB joysticks, it's just currently lower
     priority given how rare such devices are.
+3.  Ability to adjust gains of hardware effects via the Gremlin plugins UI for both
+    engines.
 
 ## Troubleshooting
 
 Section to be filled out based on user experience. Please share yours via the
 [GitHub Discussions](https://github.com/code-monet/sim-gamer-kit/discussions) page!
+

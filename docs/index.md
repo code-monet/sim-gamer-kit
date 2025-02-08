@@ -1,39 +1,45 @@
 # Sim Gamer Kit
 
-A collection of tools for flight and racing simulation gamers.
+A collection of tools for flight and driving simulation gamers on Windows
+(10 and 11).
 
 ## Tools
 
 ### FFFSake, force feedback engine for vJoy
 
-FFFSake, or **F**or **F**orce **F**eedback's **Sake**, is:
+[FFFSake](./fffsake/index.md), or **F**or **F**orce **F**eedback's **Sake**, is:
 
-*   Technically, a
-library that can bridge force feedback commands received by vJoy to a
-DirectInput compatible device.
-*   Practically, a plugin to get force feedback effects on your
-physical device while your game is actually being played with a
-vJoy virtual joystick, which is in turn being fed with inputs by an
-application like Joystick Gremlin.
+*   Technically, a library that can bridge force feedback commands received by vJoy
+    (virtual joystick) to a DirectInput compatible (physical) device.
+*   Practically, a plugin to get force feedback effects on your wheel/joystick while your
+    game is actually being played with vJoy, which is in turn being fed with inputs by
+    an application like Joystick Gremlin.
 
 ### IndirectInput, compatibility fixes for DirectInput games and devices
 
-IndirectInput is a DLL-replacement based video game compatibility fixer,
-focused on fixing issues seen when playing flight and racing games with
-DirectInput devices.
+[IndirectInput](./indirect_input/index.md) is a DLL-replacement based video game
+compatibility fixer, focused on fixing issues seen when playing flight and racing games
+with DirectInput devices.
+
+## Joystick Gremlin Plugins
 
 ### Joystick as H-shifter
 
-A Joystick Gremlin plugin to use 2 analog axes (typically a flight stick)
-as an H-shifter.
+[Gremlin plugin](./joystick_gremlin_plugins/h_shifter.md) to use 2 analog axes
+(typically a flight stick) as an H-shifter.
 
 ### Joystick as Handbrake
 
-A Joystick Gremlin plugin to use an analog axis (typically a flight
-throttle) as a handbrake (in games that only support toggle
-handbrakes).
+[Gremlin plugin](./joystick_gremlin_plugins/handbrake.md) to use an analog axis
+(typically a flight throttle) as a handbrake (in games that only support
+toggle handbrakes).
 
 ## Game-Controller Compatibility Guides
 
-A directory of guides for fixing input and force feedback compatibility
-issues using tools in this kit.
+A [directory of guides](./game_guides/index.md) for fixing input and force
+feedback compatibility issues using tools in this kit.
+
+## Hardware Compatibility Guides
+
+A [directory of guides](./hardware_guides/index.md) describing common compatibility
+issues with DirectInput devices (crowd-sourced).

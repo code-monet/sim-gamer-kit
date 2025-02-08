@@ -1,8 +1,12 @@
 # Common Compatibility Issues
 
 This document captures input or force feedback compatibility issues
-seen with DirectInput (some gamepads, most joysticks, HOTAS sets, and
+seen with DirectInput (some gamepads, and most joysticks, HOTAS sets, and
 racing wheels) devices and games.
+
+> Controllers with "rumble" or "vibration" as opposed to force feedback are
+usually Xinput devices and not DirectInput. This document does not apply to
+them.
 
 ## Game Loop Blocked By Force Feedback Commands
 
@@ -12,25 +16,31 @@ laggy force feedback, but there are no reports of this yet. This happens
 because the game loop is slowed down or thrown out of sync by DirectInput
 FFB commands blocking for longer than the application expects.
 
+> When the game is not in focus, this issue will go away, but this might
+be difficult to observe unless you're using windowed or borderless mode in
+the game. MSI Afterburner's FPS-vs-time graph can also be used to catch this
+behavior.
+
 ### Fixes
 
 1.  It is possible for such delays to come from USB hubs - try connecting
-    the device directly to a USB slot on the motherboard. Try different
-    ports as well.
+    the device directly to a USB port on the motherboard. Try different
+    ports as well. USB 2 vs 3 shouldn't matter much but worth trying anyway.
 2.  It is possible for such delays to happen because of a slow/throttling CPU.
     Try closing non-essential applications. Also check that your CPU is
     performing as expected.
-3.  Sometimes this is unavoidable with the physical device you are using. In
-    this case, you will need to use [FFFSake](../fffsake/index.md).
+3.  Sometimes this is unavoidable with the physical device you are using;
+    you will need to use [FFFSake](../fffsake/index.md).
 
 ## Zeroed Pedals
 
-Analog axes have a resting position and an associated value. Pre-2010, analog
-axes would give a value of 0 in their resting position - a zeroed axis.
-Contemporary devices have largely ditched this convention for axes
-that are resting at an end of their travel range rather than the center.
+Technically speaking, analog axes have a resting position and an associated value
+that the application sees. Pre-2010, analog axes would give a value of 0 in their
+resting position - a zeroed axis. Contemporary devices have largely ditched this
+convention for axes that are resting at an end of their travel range rather than
+the center.
 
-So, for modern:
+Practically speaking, for modern:
 
 *   Wheels:
     *   The wheel axis is zeroed
@@ -42,7 +52,7 @@ So, for modern:
     *   Yaw pedals are zeroed
     *   Toe brake pedals are (probably, need to confirm) **not** zeroed
 
-If you use such a device with a game that expects zeroed, then in the game
+If you use such a device with a game that expects zeroed axes, then in the game
 control binding menu, you'll see one or more of:
 
 *   Some random axis (quickly) gets bound when you try to rebind a control
@@ -120,12 +130,25 @@ your experience with the `Forwarding` engine. If the former is giving a better
 experience, your wheel is probably at fault. Please report the game and wheel via
 [GitHub Discussions](https://github.com/code-monet/sim-gamer-kit/discussions)!
 
-If the latter is giving a better experience, this is unexpected unless your CPU is
-quite slow. Please report these as well.
+Things to look out for (in driving games; I only have a FFB wheel), even in more
+"arcady" games:
+
+1.  Driving over rough terrain should cause rumble.
+2.  Crashing into objects should cause a sharp kick.
+3.  Steering resistance should apply, usually stronger at higher speeds and may or
+    may not be abset when stopped.
+    1.  It should always be counter to the direction you're steering, and it should
+        apply in both directions.
+4.  Drifting should be felt, usually as a loss/reduction in steering resistance.
+
+If the `Forwarding` engine is giving a better experience, this is unexpected unless
+your CPU is quite slow/starved/throttled. Please report these as well (unless
+your CPU is quite slow/starved/throttled).
 
 ## Other DirectInput (Usage) Bugs
 
-Causes 1 and 2 above lead to very wide variety of obscure bugs. Some examples are:
+Causes 1 and 2 above lead to very wide variety of obscure bugs. Thankfully these are
+relatively rare, and tend to be game or developer specific. Some examples are:
 
 1.  Game crash when using an FFB wheel - the only obvious one on this list.
 2.  Loss of some or all effects in games that do have FFB
@@ -137,3 +160,15 @@ Causes 1 and 2 above lead to very wide variety of obscure bugs. Some examples ar
 1 and 2 can be fixed simply by using `FFFSake`. 3 might be fixed by `FFFSake`
 using the `Reducer` engine, or might need `IndirectInput`. 4 will typically need
 `IndirectInput`.
+
+## Inverted Force Feedback
+
+In some games, force feedback can apply in the wrong direction. The wheel will usually
+be hard to control in these cases, and you'll notice that steering resistance is
+actually in the opposite direction. The wheel might oscillate wildly.
+
+### Fixes
+
+This *could* be fixed using `FFFSake`, but this is not currently implemented as I have
+not seen a game that needs this. When I have heard of this happening, the developer is
+on the hook for fixing it and usually follows through.
