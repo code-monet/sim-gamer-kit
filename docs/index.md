@@ -1,7 +1,6 @@
 # Sim Gamer Kit
 
-A collection of tools for flight and driving simulation gamers on Windows
-(10 and 11).
+A collection of tools for flight and driving simulation gamers on Windows.
 
 ## Tools
 
@@ -31,15 +30,14 @@ with DirectInput devices.
 ### Joystick as Handbrake
 
 [Gremlin plugin](./joystick_gremlin_plugins/handbrake.md) to use an analog axis
-(typically a flight throttle) as a handbrake (in games that only support
-toggle handbrakes).
+(typically a flight throttle) as a handbrake.
 
 ## Game-Controller Compatibility Guides
 
-A [directory of guides](./game_guides/index.md) for fixing input and force
+A [collection of guides](./game_guides/index.md) for fixing input and force
 feedback compatibility issues using tools in this kit.
 
 ## Hardware Compatibility Guides
 
-A [directory of guides](./hardware_guides/index.md) describing common compatibility
-issues with DirectInput devices (crowd-sourced).
+A [collection of guides](./hardware_guides/index.md) describing common compatibility
+issues with DirectInput devices.

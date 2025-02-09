@@ -6,7 +6,7 @@ This is because:
 
 > DLL-replacement fixes are usually detected by anti-cheat software, and
 depending on the game, may cause a soft ban. Do not use `IndirectInput` fixes
-for such games, instead, pester the developer to fix the problem.
+for such games.
 
 TODO: Fill out this section once `IndirectInput` is launched.
 
@@ -15,5 +15,3 @@ TODO: Fill out this section once `IndirectInput` is launched.
 ### Compatibility Fixes
 
 #### Forced Hardware Detection
-
-### Device Hiding

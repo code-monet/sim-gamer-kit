@@ -24,9 +24,11 @@ This may not be obvious; one common sign is that some wheel configurations are
 missing in game settings. Force feedback may be missing in some other games.
 `IndirectInput` is needed to fix this.
 
+> vJoy is also detected in-game by some games as a joystick.
+
 ## Force Feedback causes game crash
 
-Games can crash for many reason, but this particular crash happens specifically
+Games can crash for many reasons, but this particular crash happens specifically
 when a FFB device is plugged in, or FFB effects are enabled.
 `FFFSake` with `Reducer` engine should fix this, unless the actual problem is
 something else.
@@ -34,9 +36,8 @@ something else.
 ## Force Feedback causes (severe) FPS drop
 
 See "Game Loop Blocked By Force Feedback Commands" in
-[Game Issues](../game_guides/issues.md). While technically the controller is
-guilty for blocking excessively on commands, ultimately this is something the
-game developer should anticipate and handle.
+[Game Issues](../game_guides/issues.md). Some controllers just take longer to
+handle commands than others, and some games are not written to properly handle this.
 
 ## Force Feedback effects are incorrectly/incompletely implemented
 

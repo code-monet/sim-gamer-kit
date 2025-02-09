@@ -125,11 +125,11 @@ def update_gear(vjoy):
         # This way it doesn't reset to neutral on its own.
         if x_axis < -0.9:
             if y_axis < -0.9:
-              plugin_state.current_gear = Gear.GEAR_1
+                plugin_state.current_gear = Gear.GEAR_1
             elif y_axis < -0.7:
                 approaching_gear = Gear.GEAR_1
             elif y_axis > 0.9:
-              plugin_state.current_gear = Gear.GEAR_2
+                plugin_state.current_gear = Gear.GEAR_2
             elif y_axis > 0.7:
                 approaching_gear = Gear.GEAR_2
         elif -0.25 < x_axis < 0.25:

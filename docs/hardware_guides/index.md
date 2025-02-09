@@ -40,7 +40,7 @@ Inputs:
 Force Feedback:
 
 1.   Spring control by game vs wheel can be set (set to game)
-2.   Effect strengths can be set in limited, slightly confusing ways.
+2.   Hardware effect strengths can be set in limited, slightly confusing ways.
 
 ## TurtleBeach
 
@@ -59,10 +59,10 @@ can kick in for games not in their list of official supported games e.g.
 4.  Inability to combine or zero pedals and analog paddles
 
 The wheel is also detected as "not a wheel" (unclear if this bug
-is on the vendor or Microsoft) by some games (there's *some* argument to
-differentiate), and a subset of these games then use a different
-FFB logic meant as a fallback (this doesn't make sense to me at all). Usually
-this results in missing FFB (Need for Speed Most Wanted 2012, Bus Simulator 21).
+is on the vendor or Microsoft) by some games, and a subset of these games
+then use a different FFB logic meant as a fallback. Usually
+this results in missing or weak FFB (e.g. Need for Speed Most Wanted 2012,
+Bus Simulator 21).
 
 This wheel also presents a dud "Slider" axis that doesn't map to a physical axis, and
 is unfortunately not zeroed. Usually a game where this is an issue will need you

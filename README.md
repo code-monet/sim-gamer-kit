@@ -1,2 +1,4 @@
 # sim-gamer-kit
-Collection of mods, tools and guides for simulation (driving, flying) gamers.
+
+Collection of mods, tools and guides for simulation (driving, flying) gamers. Check out
+the docs (in the `docs` branch, or [here]).

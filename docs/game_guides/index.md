@@ -5,8 +5,9 @@
 First, check the list of games below and see if it already has the game you're
 looking for.
 
-If not, check the list of [controllers](../hardware_guides/index.md) and see
-if your device has known compatibility issues.
+If not, you'll have to do some investigation yourself. First, check the list of
+[controllers](../hardware_guides/index.md) and see if your device has known
+compatibility issues.
 
 Then check the list of [issues](./issues.md) to see if one or more matches what
 you are seeing; try the suggested fixes. Please share your experience via
@@ -20,24 +21,24 @@ or all DirectInput controllers.
 
 The following short forms are used to refer to common [issues](./issues.md):
 
-*   Slip: "FFB commands block game loop" fix is needed via FFFSake
-*   Combined pedals: Two axes (usually accelerator and brake pedals) need to be
+*   `Slip`: "FFB commands block game loop" fix is needed via FFFSake
+*   `Combined pedals`: Two axes (usually accelerator and brake pedals) need to be
     combined into a single axis.
-*   Zeroed pedals: An axis needs to be zeroed. Pedals and analog paddles on
+*   `Zeroed pedals`: An axis needs to be zeroed. Pedals and analog paddles on
     modern wheels are usually not zeroed.
-*   Hardware Effects Usage: This can help explain why a game might not "feel
+*   `Hardware Effects Usage`: This can help explain why a game might not "feel
     right" on your force feedback device if the latter doesn't implement built-in
     effects properly. A rating is given out of:
-    *   High: The game uses a lot of hardware FFB effects, and uses them in
+    *   `High`: The game uses a lot of hardware FFB effects, and uses them in
         advanced ways.
-    *   Medium: The game uses some hardware FFB effects in simple ways.
-    *   Minimal: The game uses only constant and damper forces, the latter in
+    *   `Medium`: The game uses some hardware FFB effects in simple ways.
+    *   `Minimal`: The game uses only constant and damper forces, the latter in
         very simple ways.
-    *   None: The game only uses constant forces.
-*   FFB high effect count: This game uses a large-ish number of FFB effects and
+    *   `None`: The game only uses constant forces.
+*   `FFB high effect count`: This game uses a large-ish number of FFB effects and
     is known to crash or lose effects with some wheels.
-*   Indirect Input: The game needs the listed feature from
-    [Indirect Input](../indirect_input/index.md)
+*   `IndirectInput`: The game needs the listed feature from
+    [IndirectInput](../indirect_input/index.md)
 
 ### Burnout Paradise
 
@@ -46,14 +47,14 @@ a common issue with other Criterion racing games from this time that requires
 forced wheel detection.
 
 1.  Hardware Effects Usage: Medium
-2.  Indirect Input: Forced wheel detection
+2.  IndirectInput: Forced wheel detection
 
 ### Bus Simulator 21
 
 A driving game that curiously uses Unreal Engine, which may be to blame for compatibility
 issues with FFB wheels:
 
-1.  Indirect Input: Forced wheel detection
+1.  IndirectInput: Forced wheel detection
 
 > TODO: Game needs further study
 
@@ -63,24 +64,38 @@ This game supports joystick, HOTAS and racing wheel input, the latter with force
 
 1.  Slip
 2.  Hardware Effects Usage: Medium
+3.  IndirectInput
+    1.   Forced wheel detection. Without this, in-game force feedback and wheel
+         input configuration is greyed out (fix unconfirmed).
 
 ### Crew Motorfest
 
-All the same issues as Crew 2, as well as:
+The implementation has changed since `Crew 2` but has the same issues and then one more:
 
 1.  FFB high effect count (crash to desktop)
+2.  Slip (issue suspected but unconfirmed)
+3.  Hardware Effects Usage: Medium
 
 ### Dirt 3
 
-One of Codemaster's earlier games before they got really good with racing wheels.
+This game came out when H-shifters were rare. Even with the fix below, the shifter
+will occasionally drop to neutral in-game; there is no known fix for that and appears
+to be game logic.
 
-1.  Indirect Input
-    1.   Forced wheel detection
-    2.   Vendor spoof (only for H-shifters not made by a manufacturer in their hard-coded list)
+1.  IndirectInput
+    1.   Vendor spoof (only for H-shifters not made by a manufacturer in their
+         hard-coded list). Without this, the in-game option to select
+         manual transmission will be missing entirely.
 
 ### Dirt Rally
 
-> TODO: Game available but study pending
+> TODO: Game available but study pending. The following are pending confirmation:
+
+1.  IndirectInput
+    1.   Vendor spoof (only for H-shifters not made by a manufacturer in their
+         hard-coded list). Without this, the in-game option to select
+         manual transmission will be missing entirely.
+    2.   Forced wheel detection to enable full FFB configuration.
 
 ### Dirt Rally 2.0
 
@@ -88,8 +103,9 @@ One of Codemaster's earlier games before they got really good with racing wheels
 
 ### Elite: Dangerous
 
-Only the first 32 buttons can be mapped from a single controller. Hmm, we wonder
-[where that limit comes from](https://learn.microsoft.com/en-us/previous-versions/windows/desktop/ee416627(v=vs.85)). Players often use vJoy and Joystick Gremlin to map
+Only the first 32 buttons can be mapped from a single controller
+([suspected source of limit](https://learn.microsoft.com/en-us/previous-versions/windows/desktop/ee416627(v=vs.85))).
+Players often use vJoy and Joystick Gremlin to map
 buttons >= 32 from the physical device to the 0-31 range of buttons on vJoy.
 
 This game does not have force feedback. It (probably still) does rumble on Xinput devices.
@@ -123,7 +139,9 @@ This Criterion game is similar to their other games from this time in terms of
 DirectInput usage.
 
 1.  Hardware Effects Usage: Medium
-2.  Indirect Input: Forced wheel detection
+2.  IndirectInput: Forced wheel detection. Without this, an inferior, fallback
+    model meant for joysticks is used; many effects are missing and forces are
+    applied along the Y axis.
 3.  Zeroed pedals
 
 ### Need for Speed: Most Wanted (2012)
@@ -132,10 +150,12 @@ This Criterion game is similar to their other games from this time in terms of
 DirectInput usage.
 
 1.  Hardware Effects Usage: Medium
-2.  Indirect Input: Forced wheel detection
+2.  IndirectInput: Forced wheel detection. Without this, an inferior, fallback
+    model meant for joysticks is used; many effects are missing and forces are
+    applied along the Y axis.
 
 > This game currently lists an incorrect fix on various online forums, a DLL replacement
-that rotates forces. With that fix, you get a fallback FFB model meant for joysticks.
+that rotates forces.
 
 ### Race Room
 
@@ -162,3 +182,7 @@ input and FFB configuration in-game that they can be made to work with most whee
 2.  American Truck Simulator
 3.  Euro Truck Simulator 2
 4.  Probably most contemporary hard core racing sims
+
+You should not need `FFFSake` and Joystick Gremlin for these games. However you could
+still Joystick Gremlin (without `FFFSake`) to use your
+[joystick as an H-shifter](../joystick_gremlin_plugins//h_shifter.md).
