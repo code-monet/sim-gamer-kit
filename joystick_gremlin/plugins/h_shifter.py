@@ -112,8 +112,6 @@ plugin_state = PluginState()
 
 def update_gear(vjoy):
     global plugin_state
-    # We want to indicate "neutral" if we are about to change gears.
-    approaching_gear = None
     if plugin_state.neutral_pressed:
         plugin_state.current_gear = Gear.GEAR_N
     elif plugin_state.reverse_pressed:
@@ -127,11 +125,11 @@ def update_gear(vjoy):
         # This way it doesn't reset to neutral on its own.
         if x_axis < -0.9:
             if y_axis < -0.9:
-              plugin_state.current_gear = Gear.GEAR_1
+                plugin_state.current_gear = Gear.GEAR_1
             elif y_axis < -0.7:
                 approaching_gear = Gear.GEAR_1
             elif y_axis > 0.9:
-              plugin_state.current_gear = Gear.GEAR_2
+                plugin_state.current_gear = Gear.GEAR_2
             elif y_axis > 0.7:
                 approaching_gear = Gear.GEAR_2
         elif -0.25 < x_axis < 0.25:
