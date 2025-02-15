@@ -81,19 +81,12 @@ download them all:
     will probably have a lot of trouble configuring your game to use vJoy,
     or using `FFFSake`, if you don't hide the physical device redirected through
     vJoy from the game. HidHide is the best option, at the time of this writing.
-4.  Visual Redistrutable C++, you should be fine with the
-    [latest x86 download](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist).
-    ([direct link for v17](https://aka.ms/vs/17/release/vc_redist.x86.exe))
-
-> `FFFSake` is compiled for `x86` because Joystick Gremlin R13 is `x86` as well.
-`x64` support will be added as needed.
 
 Install and configure these:
 
 1.  Install vJoy. You can skip the reboot, doing it after the next step.
-2.  Install Visual Redistrutable C++ (x86).
-3.  Install HidHide and reboot.
-4.  Install Joystic Gremlin, or use the "portable" version.
+2.  Install HidHide and reboot.
+3.  Install Joystic Gremlin, or use the "portable" version.
     1.   Joystick Gremlin ships with support for an older version of the vJoy DLL, not
          the one we want to use. First, navigate to the directory where you have
          installed/extracted Joystick Gremlin. Look for a file named
@@ -107,19 +100,14 @@ Install and configure these:
     3.   Launch Joystick Gremlin and ensure it starts. If it doesn't, you
          you probably picked the wrong `vJoyInterface.dll` file in the prior
          step - try the other one.
-    4.   Close Joystick Gremlin, and go back to its directory. Rename
-         `MSVCP140.dll` to `MSVCP140.old.dll`. You don't need to replace it; a
-         newer version of this file will be picked up from the VC Redist you
-         installed in step 2 above.
-    5.   Launch Joystick Gremlin and ensure it starts.
-    6.   Close Joystick Gremlin for the next step.
-5.  Launch the `Configure vJoy` app from the Start Menu and configure vJoy. The
+    4.   Close Joystick Gremlin for the next step.
+4.  Launch the `Configure vJoy` app from the Start Menu and configure vJoy. The
     recommendation on the Joystick Gremlin page is a bit outdated; instead,
     I suggest having it match the screenshot below.
 
 ![vJoy Configuration!](../resources/vjoy_conf.png)
 
-6.  Launch and
+5.  Launch and
     [configure Joystick Gremlin](https://whitemagic.github.io/JoystickGremlin/quickstart/):
     1.   Suggestion for new users: verify that your plugged in physical device shows
          up; switch to that tab. From the `Actions` menu, create a 1:1 mapping. Scroll down
@@ -139,12 +127,12 @@ Install and configure these:
          if using a wheel and `forwarding` if using a joystick.
     5.   Bind a button for `FFB Toggle`. Think of this as a safety cutoff button, to
          be pressed if you lose control of your FFB device. For this reason, use a button
-         not on the joystick/wheel. It doesn't need to be on the FFB device either.
+         not on the FFB joystick/wheel. It doesn't need to be on the FFB device either.
          Once done, the plugin page should look something like the follows, minus
          the `Running and Active` status (we'll do that later): ![FFFSake Plugin!](../resources/fffsake_gremlin_plugin.png)
     6.   Save the profile.
     7.   Close Joystick Gremlin for the next step.
-7.  Launch and
+6.  Launch and
     [configure HidHide](https://github.com/nefarius/HidHide?tab=readme-ov-file#user-guide):
     1.   Decide if you want to use list all the games you want to use with vJoy
          (**allowlist**, "Inverse cloak" unchecked), or list all the games and
@@ -165,7 +153,7 @@ Install and configure these:
     4.   Check "Enable filtering" and unplug-replug (or power off/on) the
          device.
          ![HidHide Devices!](../resources/hid_hide_devices.png)
-8.  Launch Joystick Gremlin, ensure that your physical device is still there.
+7.  Launch Joystick Gremlin, ensure that your physical device is still there.
     If not, double check that you added the Joystick Gremlin application path
     correctly (if you're using the allowlist approach) in HidHide. Then click on
     "Enable" button.
@@ -175,10 +163,14 @@ enabled some really powerful tools for your sim gaming journey.
 
 ## Usage
 
-Once you've completed the above one-time setup, future usage involves:
+Once you've completed the above one-time setup, future usage involves
+(do all these **BEFORE** starting your game):
 
 1.  Launching HidHide and ensuring the filter is enabled.
 2.  Launch Joystick Gremlin and load your desired profile. Click on `Activate`.
+3.  Press once the button you bound earlier to activate `FFFSake`.
+    `Tools` > `Log Display` > `User` will show a message when `FFFSake` is
+    turned on or off. TODO: Trigger activation via the Gremlin `Activate` button.
 
 I suggest starting with a single Joystick Gremlin profile and then branching out
 to more as you gain experience with this tool.
@@ -253,6 +245,17 @@ in a future release:
     change your FFB device.
 
 ## Troubleshooting
+
+The plugin publishes some messages via the Joystick Gremlin logging system, which you can
+view in the latter by going to `Tools` > `Log Display` > `User`.
+
+`FFFSake` generates an error log file in the directory where Joystick Gremlin is running
+from. If you run into an issue and the file contains errors or warnings, please open a
+GitHub issue attaching the log file.
+
+If force feedback cuts out or you seem to suddenly be missing effects, try Alt-tabbing out
+of the game and then getting back into it, this should generally fix the problem. Please
+check the `FFFSake` log for errors and send feedback via GitHub.
 
 Section to be filled out based on user experience. Please share yours via the
 [GitHub Discussions](https://github.com/code-monet/sim-gamer-kit/discussions) page!
