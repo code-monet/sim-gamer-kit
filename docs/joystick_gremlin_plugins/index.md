@@ -1,3 +1,5 @@
+[//]: # "© 2025 Code Monet <code.monet@proton.me>"
+
 # Joystick Gremlin Plugins
 
 A collections of plugins I made for Joystick Gremlin.

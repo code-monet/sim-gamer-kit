@@ -1,3 +1,5 @@
+[//]: # "© 2025 Code Monet <code.monet@proton.me>"
+
 # Hardware Guides
 
 This guide captures known compatibility issues with controllers I have

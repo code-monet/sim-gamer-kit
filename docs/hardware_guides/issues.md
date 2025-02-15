@@ -1,3 +1,5 @@
+[//]: # "© 2025 Code Monet <code.monet@proton.me>"
+
 # Hardware Issues and Workarounds
 
 A list of common limitations or bugs in DirectInput hardware and how to work around them.

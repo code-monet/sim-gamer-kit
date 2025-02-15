@@ -1,3 +1,5 @@
+[//]: # "© 2025 Code Monet <code.monet@proton.me>"
+
 # Common Compatibility Issues
 
 This document describes input or force feedback compatibility issues

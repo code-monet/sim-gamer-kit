@@ -1,3 +1,5 @@
+[//]: # "© 2025 Code Monet <code.monet@proton.me>"
+
 ## Joystick as Handbrake
 
 If you want to use an analog axis (usually throttle on a HOTAS, or the Y axis of

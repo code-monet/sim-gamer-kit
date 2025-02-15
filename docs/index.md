@@ -1,3 +1,5 @@
+[//]: # "© 2025 Code Monet <code.monet@proton.me>"
+
 # Sim Gamer Kit
 
 A collection of tools for flight and driving simulation gamers on Windows.

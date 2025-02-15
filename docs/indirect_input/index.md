@@ -1,3 +1,5 @@
+[//]: # "© 2025 Code Monet <code.monet@proton.me>"
+
 # IndirectInput
 
 `IndirectInput` is a DLL-replacement fixer for game-controller compatibility

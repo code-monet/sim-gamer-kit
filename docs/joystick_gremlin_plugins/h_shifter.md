@@ -1,3 +1,5 @@
+[//]: # "© 2025 Code Monet <code.monet@proton.me>"
+
 ## Joystick as H-shifter
 
 This plugin will let you use a 2-axis joystick as a 6 position H-shifter in

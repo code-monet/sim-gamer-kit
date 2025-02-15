@@ -1,3 +1,8 @@
+""" © 2025 Code Monet <code.monet@proton.me>
+
+Joystick Gremlin plugin for FFFSake.
+"""
+
 import atexit
 import inspect
 import os.path

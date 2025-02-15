@@ -1,3 +1,5 @@
+[//]: # "© 2025 Code Monet <code.monet@proton.me>"
+
 # Driving and Flight Games Input/Force Feedback Guide
 
 ## How to use this guide

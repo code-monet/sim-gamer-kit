@@ -1,3 +1,5 @@
+[//]: # "© 2025 Code Monet <code.monet@proton.me>"
+
 # FFFSake
 
 > Through this document, FFB is used as an acronym for Force Feedback.

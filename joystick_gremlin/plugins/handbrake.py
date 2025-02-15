@@ -1,4 +1,7 @@
-"""Joystick Gremlin plugin to use a joystick (throttle) as a handbrake."""
+""" © 2025 Code Monet <code.monet@proton.me>
+
+Joystick Gremlin plugin to use a joystick (throttle) as a handbrake.
+"""
 
 import time
 
