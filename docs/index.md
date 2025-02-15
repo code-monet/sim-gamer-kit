@@ -4,6 +4,13 @@
 
 A collection of tools for flight and driving simulation gamers on Windows.
 
+## Installation
+
+1.  Download the [latest release](https://github.com/code-monet/sim-gamer-kit/releases/latest)
+2.  Extract the archive to a directory of your choice.
+    1.  If you are upgrading versions, you can delete or overwrite the previous
+        installation.
+
 ## Tools
 
 ### FFFSake, force feedback engine for vJoy
