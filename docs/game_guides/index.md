@@ -75,8 +75,11 @@ This game supports joystick, HOTAS and racing wheel input, the latter with force
 The implementation has changed since `Crew 2` but has the same issues and then one more:
 
 1.  FFB high effect count (crash to desktop)
-2.  Slip (issue suspected but unconfirmed)
-3.  Hardware Effects Usage: Medium
+    1.   `HidHide` is needed to hide the problematic controller from the game, while
+         using `vJoy` to play the game.
+2.  Hardware Effects Usage: Medium
+
+FPS drop (like in previous versions of `Crew`) has not been reported for `Motorfest`.
 
 ### Dirt 3
 
