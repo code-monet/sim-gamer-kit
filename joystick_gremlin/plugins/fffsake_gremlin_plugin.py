@@ -3,12 +3,14 @@
 Joystick Gremlin plugin for FFFSake.
 """
 
-import atexit
 import inspect
 import os.path
 import sys
+import threading
+import time
 
-import gremlin
+import gremlin.common
+import gremlin.event_handler
 from gremlin.user_plugin import *
 import gremlin.util
 
@@ -51,34 +53,88 @@ try:
     )
 except AssertionError:
     # Our best guess as to why this might happen:
-    raise AssertionError(
-        "No FFB-capable devices; please connect/power on your FFB device and retry."
+    gremlin.util.display_error(
+        "FFFSake plugins says: No FFB-capable devices;"
+        " please connect/power on your FFB device and retry."
     )
+
+
+# TODO: Is this function thread safe?
+def StartUp():
+    gremlin.util.log("FFB Device selected: %s" % device_selector.value)
+    for d in fffsake.DetectFfbDevices():
+        if not d.is_virtual and d.name == device_selector.value:
+            fffsake.RegisterFffsakeReducer(d.guid)
+            gremlin.util.log("FFFSake reducer engine active")
+            break
+    else:
+        gremlin.util.display_error(
+            "Device (no longer?) present: %s" % device_selector.value
+        )
+
+
+def ShutDown():
+    fffsake.FffsakeCleanup()
+    gremlin.util.log("FFFSake disabled")
+
+
+class ActivationThread(threading.Thread):
+    """Thread that activates/deactivates fffsake with Gremlin activation.
+    
+    Thread exits when the main thread exits.
+    """
+
+    def __init__(self):
+        super().__init__()
+        self.user_ffsake_enable = threading.Event()
+        self.user_ffsake_enable.set()
+
+    def run(self):
+        try:
+            while True:
+                if gremlin.event_handler.EventListener().gremlin_active:
+                    if fffsake.IsFffsakeActive():
+                        if not self.user_ffsake_enable.is_set():
+                            ShutDown()
+                    elif self.user_ffsake_enable.is_set():
+                        StartUp()
+                elif fffsake.IsFffsakeActive():
+                    ShutDown()
+                time.sleep(1)
+                # Better than self.daemon since we can ShutDown before exiting.
+                if not threading.main_thread().is_alive():
+                    ShutDown()
+                    break
+        except Exception as e:
+            gremlin.util.log("FFFSake thread exception %r" % e)
+
+
+class PluginState:
+    def __init__(self):
+        self.activator = ActivationThread()
+        self.activator.start()
+
+    def user_toggle(self):
+        if self.activator.user_ffsake_enable.is_set():
+            gremlin.util.log("FFFSake disable requested")
+            self.activator.user_ffsake_enable.clear()
+        else:
+            gremlin.util.log("FFFSake enable requested")
+            self.activator.user_ffsake_enable.set()
+
+
+def _plugin_state():
+    carrier = gremlin.event_handler.EventListener()
+    if not hasattr(carrier, "_fffsake_state"):
+        carrier._fffsake_state = PluginState()
+    return carrier._fffsake_state
+
+
+_state = _plugin_state()
 
 
 @decorator_ffb_toggle.button(ffb_toggle.input_id)
 def ffb_toggle_handler(event):
     # Button press generates two events; act only on one of them.
     if event.is_pressed:
-        if fffsake.IsFffsakeActive():
-            gremlin.util.log("Stopping fffsake")
-            fffsake.FffsakeCleanup()
-        else:
-            gremlin.util.log("FFB Device selected: %s" % device_selector.value)
-            for d in fffsake.DetectFfbDevices():
-                if not d.is_virtual and d.name == device_selector.value:
-                    fffsake.RegisterFffsakeReducer(d.guid)
-                    gremlin.util.log("FFFSake reducer engine active")
-                    break
-            else:
-                gremlin.util.log(
-                    "Device (no longer?) present: %s" % device_selector.value
-                )
-
-
-def Cleanup():
-    gremlin.util.log("Shutting down fffsake")
-    fffsake.FffsakeCleanup()
-
-
-atexit.register(Cleanup)
+        _state.user_toggle()
