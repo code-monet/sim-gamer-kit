@@ -161,7 +161,9 @@ Install and configure these:
     "Enable" button.
 
 This is a lot of setup; if you made it this far, congratulations! You've
-enabled some really powerful tools for your sim gaming journey.
+enabled some really powerful tools for your sim gaming journey. I suggest starting
+with a single Joystick Gremlin profile and then branching out to more as you gain
+experience with these tools.
 
 ## Usage
 
@@ -170,12 +172,10 @@ Once you've completed the above one-time setup, future usage involves
 
 1.  Launching HidHide and ensuring the filter is enabled.
 2.  Launch Joystick Gremlin and load your desired profile. Click on `Activate`.
-3.  Press once the button you bound earlier to activate `FFFSake`.
-    `Tools` > `Log Display` > `User` will show a message when `FFFSake` is
-    turned on or off. TODO: Trigger activation via the Gremlin `Activate` button.
-
-I suggest starting with a single Joystick Gremlin profile and then branching out
-to more as you gain experience with this tool.
+    `FFFSake` will activate if it's a plugin loaded for this profile.
+    1.  With the profile active, you can the button you bound earlier to toggle
+    `FFFSake`. `Tools` > `Log Display` > `User` will show a message when `FFFSake` is
+    turned on or off.
 
 At this point you can launch your game and configure it for vJoy. You should be
 able to select and configure it inside the game as you would a physical controller.
