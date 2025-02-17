@@ -160,7 +160,8 @@ relatively rare, and tend to be game or developer specific. Some examples are:
     (Dirt Rally, Crew 2), H-shifter (Dirt 3, Dirt Rally) but known to be supported
     for others.
 
-1 and 2 can be fixed simply by using `FFFSake`. 3 might be fixed by `FFFSake`
+1 and 2 can be fixed simply by using `FFFSake` (`HidHide` might also be required).
+3 might be fixed by `FFFSake`
 using the `Reducer` engine, or might need `IndirectInput`. 4 will typically need
 `IndirectInput`.
 
