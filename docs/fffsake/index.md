@@ -88,7 +88,7 @@ Install and configure these:
 
 1.  Install vJoy. You can skip the reboot, doing it after the next step.
 2.  Install HidHide and reboot.
-3.  Install Joystic Gremlin, or use the "portable" version.
+3.  Install Joystick Gremlin, or use the "portable" version.
     1.   Joystick Gremlin ships with support for an older version of the vJoy DLL, not
          the one we want to use. First, navigate to the directory where you have
          installed/extracted Joystick Gremlin. Look for a file named
@@ -96,12 +96,7 @@ Install and configure these:
     2.   From the vJoy SDK zip archive you downloaded earlier, extract
          `SDK/lib/x86/vJoyInterface.dll` to the above path, taking the place of
          the original DLL that Gremlin shipped with.
-         1.   This assumes you're on a 64-bit machine (most users). If you know
-              you're on a 32-bit machine, use the file at
-              `SDK/lib/x86/vJoyInterface.dll`.
-    3.   Launch Joystick Gremlin and ensure it starts. If it doesn't, you
-         you probably picked the wrong `vJoyInterface.dll` file in the prior
-         step - try the other one.
+    3.   Launch Joystick Gremlin and ensure it starts.
     4.   Close Joystick Gremlin for the next step.
 4.  Launch the `Configure vJoy` app from the Start Menu and configure vJoy. The
     recommendation on the Joystick Gremlin page is a bit outdated; instead,
@@ -144,7 +139,7 @@ Install and configure these:
     2.   Add paths to all the applications that belong to the above list. For
          games with launchers, you want the game binary path, not the launcher.
          I typically launch the game, and then use Windows Task
-         Manager (launch via Ctrl + Shift + Esc) to find the path of the
+         Manager (launch via `Ctrl + Shift + Esc`) to find the path of the
          application `.exe` file. The applications tab should look something like:
          ![HidHide Application Configuration for blocklist!](../resources/hid_hide_apps.png)
          1.   If using an **allowlist**, make sure to add paths to Joystick
@@ -226,7 +221,7 @@ The following limitations exist because I don't know of any gamers who are affec
 them; if you are, please in touch via
 [GitHub Discussions](https://github.com/code-monet/sim-gamer-kit/discussions)
 
-1.  Only one vJoy device is supported.
+1.  Only one vJoy device is currently supported.
 2.  Only single FFB axis devices are supported in the `reducing` engine. In other
     words, it's only expected to be used for racing wheels. I don't know of any
     FFB joysticks that have mistakes in their hardware effects implementation.
