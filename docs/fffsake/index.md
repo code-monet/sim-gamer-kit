@@ -113,7 +113,8 @@ Install and configure these:
          [Joystick Gremlin Quickstart](https://whitemagic.github.io/JoystickGremlin/quickstart)
          has more details for this step.
     2.   Switch to the `Plugins` tab. Use the `Add Plugin` button and browse to
-         the `fffsake_gremlin_plugin.py` (not `fffsake.pyd`!) file.
+         the `joystick_gremlin/plugins/fffsake_gremlin_plugin.py` file,
+         at the location you extracted Sim Gamer Kit to.
     3.   Once the plugin has been added, click on the cog wheel for the plugin to
          open its configuration. From the `FF Device` dropdown in
          plugin configuration, ensure your FFB capable device is selected. Most
