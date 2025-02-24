@@ -1,3 +1,5 @@
+[//]: # "© 2025 Code Monet <code.monet@proton.me>"
+
 # FFFSake
 
 See setup docs for usage. The rest of this doc is intended for
