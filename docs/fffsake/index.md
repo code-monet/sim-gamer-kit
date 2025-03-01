@@ -123,8 +123,8 @@ Install and configure these:
          Select either the `forwarding` or the `reducing` engine. See section
          below for details. If you're not sure, start with the `reducing` engine
          if using a wheel and `forwarding` if using a joystick.
-    5.   Bind a button for `FFB Toggle`. Think of this as a safety cutoff button, to
-         be pressed if you lose control of your FFB device. For this reason, use a button
+    5.   Bind a button for `Mute/Unmute Force Feedback`. Think of this as a safety cutoff
+         button, to be pressed if you lose control of your FFB device. For this reason, use a button
          not on the FFB joystick/wheel. It doesn't need to be on the FFB device either.
          Once done, the plugin page should look something like the follows, minus
          the `Running and Active` status (we'll do that later): ![FFFSake Plugin!](../resources/fffsake_gremlin_plugin.png)
@@ -169,9 +169,14 @@ Once you've completed the above one-time setup, future usage involves
 1.  Launching HidHide and ensuring the filter is enabled.
 2.  Launch Joystick Gremlin and load your desired profile. Click on `Activate`.
     `FFFSake` will activate if it's a plugin loaded for this profile.
-    1.  With the profile active, you can the button you bound earlier to toggle
+    1.  With the profile active, you can the button you bound earlier to toggle muting.
     `FFFSake`. `Tools` > `Log Display` > `User` will show a message when `FFFSake` is
     turned on or off.
+3.  Optional: Set gain percentages for hardware force feedback effects. Games typically
+    use a subset of these, so changing them may not have an effect. The
+    [game guides](../game_guides/index.md)
+    have recommended settings for some games. The default value is 50%. See the
+    [game issues guide](../game_guides/issues.md) for why you might want to change these.
 
 At this point you can launch your game and configure it for vJoy. You should be
 able to select and configure it inside the game as you would a physical controller.
@@ -213,8 +218,7 @@ Both engines have the following features:
     1.   On slower CPUs, the `forwarding` engine is currently better for this. With
          planned future optimizations, the `reducing` engine will always be the
          superior option for this feature.
-3.  Setting gain for individual hardware effects
-    (NOTE: targeted for a future release).
+3.  Setting gain for individual hardware effects.
 
 ## Limitations and Known Issues
 
