@@ -148,6 +148,10 @@ If the `Forwarding` engine is giving a better experience, this is unexpected unl
 your CPU is quite slow/starved/throttled. Please report these as well (unless
 your CPU is quite slow/starved/throttled).
 
+## FFB Saturation
+
+Not strictly a compatibility issue. TODO: Elaborate.
+
 ## Other DirectInput (Usage) Bugs
 
 Causes 1 and 2 above lead to very wide variety of obscure bugs. Thankfully these are
