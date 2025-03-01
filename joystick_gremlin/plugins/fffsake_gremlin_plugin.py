@@ -33,6 +33,86 @@ ffb_toggle = PhysicalInputVariable(
 )
 decorator_ffb_toggle = ffb_toggle.create_decorator(mode.value)
 
+###############################################################################
+# All FFFSake options.
+option_constant_gain = IntegerVariable(
+    "Constant Gain %",
+    "User gain setting for all constant effects",
+    initial_value=50,
+    min_value=0,
+    max_value=100,
+)
+option_ramp_gain = IntegerVariable(
+    "Ramp Gain %",
+    "User gain setting for all ramp effects",
+    initial_value=50,
+    min_value=0,
+    max_value=100,
+)
+option_sine_gain = IntegerVariable(
+    "Sine Gain %",
+    "User gain setting for all sine effects",
+    initial_value=50,
+    min_value=0,
+    max_value=100,
+)
+option_square_gain = IntegerVariable(
+    "Square Gain %",
+    "User gain setting for all square effects",
+    initial_value=50,
+    min_value=0,
+    max_value=100,
+)
+option_triangle_gain = IntegerVariable(
+    "Triangle Gain %",
+    "User gain setting for all triangle effects",
+    initial_value=50,
+    min_value=0,
+    max_value=100,
+)
+option_sawtooth_up_gain = IntegerVariable(
+    "Sawtooth Up Gain %",
+    "User gain setting for all sawtooth up effects",
+    initial_value=50,
+    min_value=0,
+    max_value=100,
+)
+option_sawtooth_down_gain = IntegerVariable(
+    "Sawtooth Down Gain %",
+    "User gain setting for all sawtooth down effects",
+    initial_value=50,
+    min_value=0,
+    max_value=100,
+)
+option_spring_gain = IntegerVariable(
+    "Spring Gain %",
+    "User gain setting for all spring effects",
+    initial_value=50,
+    min_value=0,
+    max_value=100,
+)
+option_damper_gain = IntegerVariable(
+    "Damper Gain %",
+    "User gain setting for all damper effects",
+    initial_value=50,
+    min_value=0,
+    max_value=100,
+)
+option_inertia_gain = IntegerVariable(
+    "Inertia Gain %",
+    "User gain setting for all inertia effects",
+    initial_value=50,
+    min_value=0,
+    max_value=100,
+)
+option_friction_gain = IntegerVariable(
+    "Friction Gain %",
+    "User gain setting for all friction effects",
+    initial_value=50,
+    min_value=0,
+    max_value=100,
+)
+
 
 def _process_registry_value(self, value):
     return str(value)
@@ -58,6 +138,25 @@ except AssertionError:
         " please connect/power on your FFB device and retry."
     )
 
+
+def MakeOptions():
+    opt = fffsake.FffsakeOptions()
+    opt.engine_options.set_constant_gain(option_constant_gain.value / 100)
+    opt.engine_options.set_ramp_gain(option_ramp_gain.value / 100)
+    opt.engine_options.set_sine_gain(option_sine_gain.value / 100)
+    opt.engine_options.set_square_gain(option_square_gain.value / 100)
+    opt.engine_options.set_triangle_gain(option_triangle_gain.value / 100)
+    opt.engine_options.set_sawtooth_up_gain(option_sawtooth_up_gain.value / 100)
+    opt.engine_options.set_sawtooth_down_gain(option_sawtooth_down_gain.value / 100)
+    opt.engine_options.set_spring_gain(option_spring_gain.value / 100)
+    opt.engine_options.set_damper_gain(option_damper_gain.value / 100)
+    opt.engine_options.set_inertia_gain(option_inertia_gain.value / 100)
+    opt.engine_options.set_friction_gain(option_friction_gain.value / 100)
+    return opt
+
+
+###############################################################################
+# Plugin functionality.
 
 # TODO: Is this function thread safe?
 def StartUp():
@@ -88,6 +187,10 @@ class ActivationThread(threading.Thread):
         super().__init__()
         self.user_ffsake_enable = threading.Event()
         self.user_ffsake_enable.set()
+        self._lock = threading.Lock()
+        # Only use properties to access.
+        # Thread changes this to None once it has been "consumed".
+        self._options = MakeOptions()
 
     def run(self):
         try:
@@ -98,6 +201,12 @@ class ActivationThread(threading.Thread):
                             ShutDown()
                     elif self.user_ffsake_enable.is_set():
                         StartUp()
+                    
+                    if fffsake.IsFffsakeActive():
+                        options = self.options
+                        if options is not None:
+                            fffsake.SetFffsakeOptions(options)
+                            del self.options
                 elif fffsake.IsFffsakeActive():
                     ShutDown()
                 time.sleep(1)
@@ -107,6 +216,21 @@ class ActivationThread(threading.Thread):
                     break
         except Exception as e:
             gremlin.util.log("FFFSake thread exception %r" % e)
+    
+    @property
+    def options(self):
+        with self._lock:
+            return self._options
+
+    @options.setter
+    def options(self, value):
+        with self._lock:
+            self._options = value
+    
+    @options.deleter
+    def options(self):
+        with self._lock:
+            self._options = None
 
 
 class PluginState:
@@ -131,10 +255,12 @@ def _plugin_state():
 
 
 _state = _plugin_state()
+_state.activator.options = MakeOptions()
 
 
 @decorator_ffb_toggle.button(ffb_toggle.input_id)
 def ffb_toggle_handler(event):
     # Button press generates two events; act only on one of them.
     if event.is_pressed:
+        _state.activator.options = MakeOptions()
         _state.user_toggle()
