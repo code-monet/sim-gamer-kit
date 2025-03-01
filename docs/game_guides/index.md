@@ -39,6 +39,8 @@ The following short forms are used to refer to common [issues](./issues.md):
     *   `None`: The game only uses constant forces.
 *   `FFB high effect count`: This game uses a large-ish number of FFB effects and
     is known to crash or lose effects with some wheels.
+*   `FFB Saturation`: Force feedback from the game saturates; FFFSake user gain
+    settings are advised.
 *   `IndirectInput`: The game needs the listed feature from
     [IndirectInput](../indirect_input/index.md)
 
@@ -127,6 +129,7 @@ Known compatibility issues:
 1.  Zeroed pedals
 2.  Hardware Effects Usage: High
 3.  FFB high effect count (partial loss of effects)
+4.  FFB Saturation: Recommend **50% Constant** and **50% Spring**.
 
 ### Need for Speed: Heat
 
