@@ -27,8 +27,8 @@ from fffsake.x86 import fffsake
 
 mode = ModeVariable("Mode", "The mode to use for this mapping")
 ffb_toggle = PhysicalInputVariable(
-    "FFFSake Toggle",
-    "Button to toggle Force Feedback on/off. Can be on any device",
+    "Mute/Unmute Force Feedback",
+    "Button to mute/unmute Force Feedback. Can be on any device",
     [gremlin.common.InputType.JoystickButton],
 )
 decorator_ffb_toggle = ffb_toggle.create_decorator(mode.value)
@@ -155,6 +155,21 @@ def MakeOptions():
     return opt
 
 
+def MakeMutingOptions():
+    opt = MakeOptions()
+    opt.engine_options.set_constant_gain(0)
+    opt.engine_options.set_ramp_gain(0)
+    opt.engine_options.set_sine_gain(0)
+    opt.engine_options.set_square_gain(0)
+    opt.engine_options.set_triangle_gain(0)
+    opt.engine_options.set_sawtooth_up_gain(0)
+    opt.engine_options.set_sawtooth_down_gain(0)
+    opt.engine_options.set_spring_gain(0)
+    opt.engine_options.set_damper_gain(0)
+    opt.engine_options.set_inertia_gain(0)
+    opt.engine_options.set_friction_gain(0)
+    return opt
+
 ###############################################################################
 # Plugin functionality.
 
@@ -185,25 +200,21 @@ class ActivationThread(threading.Thread):
 
     def __init__(self):
         super().__init__()
-        self.user_ffsake_enable = threading.Event()
-        self.user_ffsake_enable.set()
         self._lock = threading.Lock()
         # Only use properties to access.
-        # Thread changes this to None once it has been "consumed".
+        # Thread changes this to None once it has been "consumed". Thread
+        # will retry until FFFSake is active.
         self._options = MakeOptions()
 
     def run(self):
         try:
             while True:
                 if gremlin.event_handler.EventListener().gremlin_active:
-                    if fffsake.IsFffsakeActive():
-                        if not self.user_ffsake_enable.is_set():
-                            ShutDown()
-                    elif self.user_ffsake_enable.is_set():
+                    if not fffsake.IsFffsakeActive():
                         StartUp()
                     
                     if fffsake.IsFffsakeActive():
-                        options = self.options
+                        options = self.options  # Lock once and retrieve value.
                         if options is not None:
                             fffsake.SetFffsakeOptions(options)
                             del self.options
@@ -237,14 +248,19 @@ class PluginState:
     def __init__(self):
         self.activator = ActivationThread()
         self.activator.start()
+        self._user_mute = False
 
     def user_toggle(self):
-        if self.activator.user_ffsake_enable.is_set():
-            gremlin.util.log("FFFSake disable requested")
-            self.activator.user_ffsake_enable.clear()
+        if self._user_mute:
+            gremlin.util.log("Force feedback unmute requested")
+            self._user_mute = False
+            # Don't MakeOptions() here; the values are taken from some
+            # stale scope. Options have been set higher up in the call
+            # stack from the "live" scope.
         else:
-            gremlin.util.log("FFFSake enable requested")
-            self.activator.user_ffsake_enable.set()
+            gremlin.util.log("Force Feedback mute requested")
+            self._user_mute = True
+            self.activator.options = MakeMutingOptions()
 
 
 def _plugin_state():
@@ -262,5 +278,8 @@ _state.activator.options = MakeOptions()
 def ffb_toggle_handler(event):
     # Button press generates two events; act only on one of them.
     if event.is_pressed:
+        # Overwritten if muting, used if unmuting.
+        # This needs to be set here; there's some funny scoping business
+        # going on.
         _state.activator.options = MakeOptions()
         _state.user_toggle()
