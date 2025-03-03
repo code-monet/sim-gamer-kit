@@ -11,6 +11,7 @@ import time
 
 import gremlin.common
 import gremlin.event_handler
+import gremlin.joystick_handling
 from gremlin.user_plugin import *
 import gremlin.util
 
@@ -23,6 +24,11 @@ while True:
     current_path = head
 
 from fffsake.x86 import fffsake
+
+# Fix for the situation where issued effects are lost if Gremlin hasn't
+# acquired the vJoy device yet.
+# This logic could be smarter.
+VJOY_DEVICES_TO_ACQUIRE = [1]
 
 
 mode = ModeVariable("Mode", "The mode to use for this mapping")
@@ -272,6 +278,11 @@ def _plugin_state():
 
 _state = _plugin_state()
 _state.activator.options = MakeOptions()
+# Fix for effects being missed if they are issued before Gremlin
+# actually decides to acquire the vJoy device.
+
+for vjoy_device in VJOY_DEVICES_TO_ACQUIRE:
+    gremlin.joystick_handling.VJoyProxy()[vjoy_device]  # Acquires the device.
 
 
 @decorator_ffb_toggle.button(ffb_toggle.input_id)
