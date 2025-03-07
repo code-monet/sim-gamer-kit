@@ -1,4 +1,1 @@
-url: https://code-monet.github.io/sim-gamer-kit/
-baseurl: /
-
-remote_theme: poole/lanyon
+remote_theme: pages-themes/leap-day@v0.2.0
