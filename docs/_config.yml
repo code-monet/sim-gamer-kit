@@ -1,4 +1,5 @@
-url: https://code-monet.github.io/sim-gamer-kit/
-baseurl: /
+remote_theme: pages-themes/leap-day@v0.2.0
 
-remote_theme: poole/lanyon
+show_downloads: true
+title: Sim Gamer Kit
+description: A collection of tools for flight and driving simulation gamers on Windows
