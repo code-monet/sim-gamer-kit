@@ -129,7 +129,9 @@ Known compatibility issues:
 1.  Zeroed pedals
 2.  Hardware Effects Usage: High
 3.  FFB high effect count (partial loss of effects)
-4.  FFB Saturation: Recommend **50% Constant** and **50% Spring**.
+4.  FFB Saturation: Recommended **40%** for `Constant`, `Spring`, `Square` and `Sine`.
+5.  Don't bind handbrake to an analog axis, it can break auto-braking behavior for
+    accelerator and reverse axes.
 
 ### Need for Speed: Heat
 

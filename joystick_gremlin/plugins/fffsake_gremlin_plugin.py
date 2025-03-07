@@ -141,7 +141,7 @@ except AssertionError:
     # Our best guess as to why this might happen:
     gremlin.util.display_error(
         "FFFSake plugins says: No FFB-capable devices;"
-        " please connect/power on your FFB device and retry."
+        " please connect/power on your FFB device and restart Gremlin."
     )
 
 
