@@ -167,16 +167,16 @@ Once you've completed the above one-time setup, future usage involves
 (do all these **BEFORE** starting your game):
 
 1.  Launching HidHide and ensuring the filter is enabled.
-2.  Launch Joystick Gremlin and load your desired profile. Click on `Activate`.
-    `FFFSake` will activate if it's a plugin loaded for this profile.
-    1.  With the profile active, you can the button you bound earlier to toggle muting.
-    `FFFSake`. `Tools` > `Log Display` > `User` will show a message when `FFFSake` is
-    turned on or off.
+2.  Launch Joystick Gremlin and load your desired profile.
 3.  Optional: Set gain percentages for hardware force feedback effects. Games typically
     use a subset of these, so changing them may not have an effect. The
     [game guides](../game_guides/index.md)
     have recommended settings for some games. The default value is 50%. See the
     [game issues guide](../game_guides/issues.md) for why you might want to change these.
+4.  Click on `Activate`. `FFFSake` will activate if it's a plugin loaded for this profile.
+    1.  With the profile active, you can use the button you bound earlier to toggle muting.
+    `FFFSake`. `Tools` > `Log Display` > `User` will show a message when `FFFSake` is
+    turned on or off.
 
 At this point you can launch your game and configure it for vJoy. You should be
 able to select and configure it inside the game as you would a physical controller.
@@ -218,7 +218,7 @@ Both engines have the following features:
     1.   On slower CPUs, the `forwarding` engine is currently better for this. With
          planned future optimizations, the `reducing` engine will always be the
          superior option for this feature.
-3.  Setting gain for individual hardware effects.
+3.  Setting gain for individual hardware effects (requires re-`Activate` in Gremlin).
 
 ## Limitations and Known Issues
 
