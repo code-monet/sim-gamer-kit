@@ -1,1 +1,5 @@
 remote_theme: pages-themes/leap-day@v0.2.0
+
+show_downloads: true
+title: Sim Gamer Kit
+description: A collection of tools for flight and driving simulation gamers on Windows
