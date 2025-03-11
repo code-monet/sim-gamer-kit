@@ -148,15 +148,9 @@ If the `Forwarding` engine is giving a better experience, this is unexpected unl
 your CPU is quite slow/starved/throttled. Please report these as well (unless
 your CPU is quite slow/starved/throttled).
 
-## FFB Saturation
-
-Force feedback saturation occurs when multiple force feedback effects are active simultaneously, and their combined strength exceeds the maximum force the hardware can produce. This leads to a partial loss of feedback detail, as the hardware is unable to accurately reproduce the full range of forces requested by the game.
-
-To mitigate saturation, users can adjust the gain (intensity) of individual hardware effects. By reducing the gain of specific effects, their contribution to the overall force is lessened, thus reducing or eliminating saturation and restoring feedback detail.
-
 ## Other DirectInput (Usage) Bugs
 
-Causes 1 and 2 above lead to very wide variety of obscure bugs. Thankfully these are
+Sometimes games do not use DirectInput correctly, leading to obscure bugs. These are
 relatively rare, and tend to be game or developer specific. Some examples are:
 
 1.  Game crash only when using an FFB wheel - the only obvious one on this list.
@@ -170,6 +164,20 @@ relatively rare, and tend to be game or developer specific. Some examples are:
 3 might be fixed by `FFFSake`
 using the `Reducer` engine, or might need `IndirectInput`. 4 will typically need
 `IndirectInput`.
+
+## FFB Saturation
+
+Force feedback saturation can occur when multiple force feedback effects are active
+simultaneously, and their combined strength exceeds the maximum force the hardware
+can produce. This might be an intentional choice by the game in some cases.
+
+With saturation, there will be a partial loss of feedback detail. For example, when
+steering over rough ground, the steering strength might significantly mask the terrain
+effects.
+
+To mitigate saturation, you can adjust the gain of individual hardware effects in FFFSake.
+By reducing the gain of specific effects, their contribution to the overall force is lessened,
+thus reducing or eliminating saturation and restoring feedback detail.
 
 ## Inverted Force Feedback
 
