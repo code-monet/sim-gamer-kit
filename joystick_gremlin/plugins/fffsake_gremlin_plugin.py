@@ -46,77 +46,77 @@ option_constant_gain = IntegerVariable(
     "User gain setting for all constant effects",
     initial_value=50,
     min_value=0,
-    max_value=100,
+    max_value=500,
 )
 option_ramp_gain = IntegerVariable(
     "Ramp Gain %",
     "User gain setting for all ramp effects",
     initial_value=50,
     min_value=0,
-    max_value=100,
+    max_value=500,
 )
 option_sine_gain = IntegerVariable(
     "Sine Gain %",
     "User gain setting for all sine effects",
     initial_value=50,
     min_value=0,
-    max_value=100,
+    max_value=500,
 )
 option_square_gain = IntegerVariable(
     "Square Gain %",
     "User gain setting for all square effects",
     initial_value=50,
     min_value=0,
-    max_value=100,
+    max_value=500,
 )
 option_triangle_gain = IntegerVariable(
     "Triangle Gain %",
     "User gain setting for all triangle effects",
     initial_value=50,
     min_value=0,
-    max_value=100,
+    max_value=500,
 )
 option_sawtooth_up_gain = IntegerVariable(
     "Sawtooth Up Gain %",
     "User gain setting for all sawtooth up effects",
     initial_value=50,
     min_value=0,
-    max_value=100,
+    max_value=500,
 )
 option_sawtooth_down_gain = IntegerVariable(
     "Sawtooth Down Gain %",
     "User gain setting for all sawtooth down effects",
     initial_value=50,
     min_value=0,
-    max_value=100,
+    max_value=500,
 )
 option_spring_gain = IntegerVariable(
     "Spring Gain %",
     "User gain setting for all spring effects",
     initial_value=50,
     min_value=0,
-    max_value=100,
+    max_value=500,
 )
 option_damper_gain = IntegerVariable(
     "Damper Gain %",
     "User gain setting for all damper effects",
     initial_value=50,
     min_value=0,
-    max_value=100,
+    max_value=500,
 )
 option_inertia_gain = IntegerVariable(
     "Inertia Gain %",
     "User gain setting for all inertia effects",
     initial_value=50,
     min_value=0,
-    max_value=100,
+    max_value=500,
 )
 option_friction_gain = IntegerVariable(
     "Friction Gain %",
     "User gain setting for all friction effects",
     initial_value=50,
     min_value=0,
-    max_value=100,
+    max_value=500,
 )
 
 
