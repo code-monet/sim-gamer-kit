@@ -150,7 +150,9 @@ your CPU is quite slow/starved/throttled).
 
 ## FFB Saturation
 
-Not strictly a compatibility issue. TODO: Elaborate.
+Force feedback saturation occurs when multiple force feedback effects are active simultaneously, and their combined strength exceeds the maximum force the hardware can produce. This leads to a partial loss of feedback detail, as the hardware is unable to accurately reproduce the full range of forces requested by the game.
+
+To mitigate saturation, users can adjust the gain (intensity) of individual hardware effects. By reducing the gain of specific effects, their contribution to the overall force is lessened, thus reducing or eliminating saturation and restoring feedback detail.
 
 ## Other DirectInput (Usage) Bugs
 
