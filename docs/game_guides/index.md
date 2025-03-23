@@ -41,6 +41,8 @@ The following short forms are used to refer to common [issues](./issues.md):
     is known to crash or lose effects with some wheels.
 *   `FFB Saturation`: Force feedback from the game saturates; FFFSake user gain
     settings are advised.
+*   `FFB Crash`: The game crashes if FFB devices are plugged in, or if FFB is enabled
+    in-game.
 *   `IndirectInput`: The game needs the listed feature from
     [IndirectInput](../indirect_input/index.md)
 
@@ -76,9 +78,8 @@ This game supports joystick, HOTAS and racing wheel input, the latter with force
 
 The implementation has changed since `Crew 2` but has the same issues and then one more:
 
-1.  FFB high effect count (crash to desktop)
-    1.   `HidHide` is needed to hide the problematic controller from the game, while
-         using `vJoy` to play the game.
+1.  FFB Crash: `HidHide` is needed to hide the problematic controller from the game, while
+    using `vJoy` to play the game.
 2.  Hardware Effects Usage: Medium
 
 FPS drop (like in previous versions of `Crew`) has not been reported for `Motorfest`.
@@ -171,6 +172,9 @@ that rotates forces.
 
 > TODO: Game available but study pending
 
+1.  FFB Crash: `HidHide` is needed to hide the problematic controller from the game, while
+    using `vJoy` to play the game.
+
 ### Richard Burns' Rally
 
 > TODO: Game available but study pending
@@ -182,6 +186,12 @@ that rotates forces.
 ### Test Drive Unlimited 2
 
 > TODO: Game available but study pending
+
+### Tokyo Xtreme Racer
+
+1.  FFB Crash: `HidHide` is needed to hide the problematic controller from the game, while
+    using `vJoy` to play the game.
+2.  (Unconfirmed) IndirectInput: Forced wheel detection
 
 ## Games with generally excellent implementations
 
