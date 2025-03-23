@@ -13,7 +13,7 @@ them.
 ## Game Loop Blocked By Force Feedback Commands
 
 The typical way this issue manifests is, loss of frame rate only when
-using FFB devices (wheels). Another possible way this could manifest is,
+using FFB devices (wheels or joystick). Another possible way this could manifest is,
 laggy force feedback, but there are no reports of this yet. This happens
 because the game loop is slowed down or thrown out of sync by DirectInput
 FFB commands blocking for longer than the application expects.
@@ -130,7 +130,7 @@ therefore wouldn't know if something is wrong.
 
 Try using the `Reducer` engine from `FFFSake` and play the game for a bit. Compare
 your experience with the `forwarder` engine. If the former is giving a better
-experience, you are running into this issue! Please report the game and wheel via
+experience, you are running into this issue! Please report the game and wheel/joystick via
 [GitHub Discussions](https://github.com/code-monet/sim-gamer-kit/discussions)!
 
 Things to look out for (in driving games; I only have a FFB wheel), even in more
@@ -182,15 +182,20 @@ With saturation, there will be a partial loss of feedback detail. For example, w
 steering over rough ground, the steering strength might significantly mask the terrain
 effects.
 
-To mitigate saturation, you can adjust the gain of individual hardware effects in FFFSake.
+### Fixes
+
+To mitigate saturation, you can adjust the gain of individual hardware effects in `FFFSake`.
 By reducing the gain of specific effects, their contribution to the overall force is lessened,
 thus reducing or eliminating saturation and restoring feedback detail.
 
+The game guides may have recommended settings, which can be used as a starting point; per-device
+tweaking might be desired, depending on the maximum and sustained torque values for the device.
+
 ## Inverted Force Feedback
 
-In some games, force feedback can apply in the wrong direction. The wheel will usually
-be hard to control in these cases, and you'll notice that steering resistance is
-actually in the opposite direction. The wheel might oscillate wildly.
+In some games, force feedback can apply in the wrong direction. The wheel/joystick will usually
+be hard to control in these cases. For wheels, you'll notice that steering resistance is
+actually in the opposite direction. The wheel/joystick might oscillate wildly.
 
 ### Fixes
 
