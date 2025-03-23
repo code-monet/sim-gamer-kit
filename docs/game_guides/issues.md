@@ -159,18 +159,18 @@ Use `FFFSake`, either `Forwarder` or `Reducer` engine.
 
 ## Other DirectInput (Usage) Bugs
 
-Sometimes games do not use DirectInput correctly, leading to obscure bugs. These are
-relatively rare, and tend to be game or developer specific. Some examples are:
+Sometimes games do not use DirectInput correctly, or there are quirks in the device
+drivers, leading to obscure bugs. These are relatively rare, and tend to be game or
+developer specific. Some examples are:
 
 1.  Loss of some or all effects in games that do have FFB
+    1.   Can be fixed using `FFFSake`.
 2.  Game effects feeling _wrong_ (vague, I know).
+    1.   Might be fixed using `FFFSake`.
 3.  Certain features disabled in the game for your controller e.g. FFB settings
     (Dirt Rally, Crew 2), H-shifter (Dirt 3, Dirt Rally) but known to be supported
     for others.
-
-1 can be fixed simply by using `FFFSake` (`HidHide` might also be required).
-2 might be fixed by `FFFSake` using the `Reducer` engine, or might need `IndirectInput`.
-3 will typically need `IndirectInput`.
+    1.   `IndirectInput` will likely be required.
 
 ## FFB Saturation
 
