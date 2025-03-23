@@ -119,10 +119,10 @@ Install and configure these:
          open its configuration. From the `FF Device` dropdown in
          plugin configuration, ensure your FFB capable device is selected. Most
          people would have exactly one such device.
-    4.   [NOTE: only `reducing` engine is available in initial alpha releases].
-         Select either the `forwarding` or the `reducing` engine. See section
-         below for details. If you're not sure, start with the `reducing` engine
-         if using a wheel and `forwarding` if using a joystick.
+    4.   [NOTE: only `reducer` engine is available in initial alpha releases].
+         Select either the `forwarder` or the `reducer` engine. See section
+         below for details. If you're not sure, start with the `reducer` engine
+         if using a wheel and `forwarder` if using a joystick.
     5.   Bind a button for `Mute/Unmute Force Feedback`. Think of this as a safety cutoff
          button, to be pressed if you lose control of your FFB device. For this reason, use a button
          not on the FFB joystick/wheel. It doesn't need to be on the FFB device either.
@@ -187,16 +187,16 @@ able to select and configure it inside the game as you would a physical controll
 device to your physical FFB-capable controller. They do this in rather different
 ways, as described below.
 
-#### Forwarding Engine
+#### Forwarder Engine
 
-The `forwarding` engine takes FFB commands received from vJoy (coming from
+The `forwarder` engine takes FFB commands received from vJoy (coming from
 the game or from Windows) and writes them to the physical device using DirectInput.
 In this process, the common compatibility fixes, described later, are also applied.
 This engine has relatively lower CPU usage but cannot fix all compatibility issues.
 
-#### Reducing Engine
+#### Reducer Engine
 
-The `reducing` engine takes FFB commands received from vJoy (coming from
+The `reducer` engine takes FFB commands received from vJoy (coming from
 the game or from Windows) and "reduces" them to a stream of constant forces, which
 are written to the physical device using DirectInput. This way the above common and
 following additional compatibility issues can be fixed:
@@ -215,8 +215,8 @@ Both engines have the following features:
     [Indirect Input](../indirect_input/index.md))
 2.  "Slip" FFB commands when they are issued faster than the device can handle them,
     usually leading to a drop in FPS in game when using a FFB device.
-    1.   On slower CPUs, the `forwarding` engine is currently better for this. With
-         planned future optimizations, the `reducing` engine will always be the
+    1.   On slower CPUs, the `forwarder` engine is currently better for this. With
+         planned future optimizations, the `reducer` engine will always be the
          superior option for this feature.
 3.  Setting gain for individual hardware effects (requires re-`Activate` in Gremlin).
 
@@ -227,19 +227,19 @@ them; if you are, please in touch via
 [GitHub Discussions](https://github.com/code-monet/sim-gamer-kit/discussions)
 
 1.  Only one vJoy device is currently supported.
-2.  Only single FFB axis devices are supported in the `reducing` engine. In other
+2.  Only single FFB axis devices are supported in the `reducer` engine. In other
     words, it's only expected to be used for racing wheels. I don't know of any
     FFB joysticks that have mistakes in their hardware effects implementation.
 
 The following known issues and planned features will be addressed
 in a future release:
 
-1.  Decrease CPU usage, especially for the `reducing` engine.
-2.  Only single FFB axis devices are supported in the `forwarding` engine. In other
+1.  Decrease CPU usage, especially for the `reducer` engine.
+2.  Only single FFB axis devices are supported in the `forwarder` engine. In other
     words, it's only expected to be used for racing wheels. It's relatively easy to
     add support for (two axes) FFB joysticks, it's just currently lower
     priority given how rare such devices are.
-3.  Some effects (friction and inertia, mainly) in the reducing engine could be refined.
+3.  Some effects (friction and inertia, mainly) in the `reducer` engine could be refined.
     These effects are not commonly used.
 4.  Ability to adjust gains of hardware effects via the Gremlin plugins UI for both
     engines.
