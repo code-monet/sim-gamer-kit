@@ -248,6 +248,8 @@ in a future release:
 
 ## Troubleshooting
 
+### General
+
 The plugin publishes some messages via the Joystick Gremlin logging system, which you can
 view in the latter by going to `Tools` > `Log Display` > `User`.
 
@@ -259,5 +261,10 @@ If force feedback cuts out or you seem to suddenly be missing effects, try Alt-t
 of the game and then getting back into it, this should generally fix the problem. Please
 check the `FFFSake` log for errors and send feedback via GitHub.
 
-Section to be filled out based on user experience. Please share yours via the
-[GitHub Discussions](https://github.com/code-monet/sim-gamer-kit/discussions) page!
+### ImportError: DLL Load failed: The specified procedure could not be found
+
+See the `Setup` section above, and follow the steps to replace the `vJoyInterface.dll` packaged
+with Joystick Gremlin with the latest one you downloaded from GitHub earlier.
+
+(Section to be filled out based on user experience. Please share yours via the
+[GitHub Discussions](https://github.com/code-monet/sim-gamer-kit/discussions) page!)
