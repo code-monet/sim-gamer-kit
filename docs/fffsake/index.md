@@ -104,7 +104,7 @@ Install and configure these:
 
 ![vJoy Configuration!](../resources/vjoy_conf.png)
 
-5.  Launch and
+5.  Plug in your FFB device, then launch and
     [configure Joystick Gremlin](https://whitemagic.github.io/JoystickGremlin/quickstart/):
     1.   Suggestion for new users: verify that your plugged in physical device shows
          up; switch to that tab. From the `Actions` menu, create a 1:1 mapping. Scroll down
@@ -119,8 +119,7 @@ Install and configure these:
          open its configuration. From the `FF Device` dropdown in
          plugin configuration, ensure your FFB capable device is selected. Most
          people would have exactly one such device.
-    4.   [NOTE: only `reducer` engine is available in initial alpha releases].
-         Select either the `forwarder` or the `reducer` engine. See section
+    4.   Select either the `forwarder` or the `reducer` engine. See section
          below for details. If you're not sure, start with the `reducer` engine
          if using a wheel and `forwarder` if using a joystick.
     5.   [**REQUIRED**] Bind a button for `Mute/Unmute Force Feedback`. Think of this as a safety cutoff

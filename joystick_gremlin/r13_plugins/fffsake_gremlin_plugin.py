@@ -141,22 +141,32 @@ option_engine_selector = SelectionVariable(
     [_FORWARDER, _REDUCER],
     is_optional=True,
 )
-# Doesn't work if the user has multiple devices with the
+
+# Device selection doesn't work if the user has multiple devices with the
 # same name - this is unlikely to need support.
-# TODO: This list only populates at Gremlin launch, and after each "Activate".
-try:
-    option_device_selector = SelectionVariable(
-        "FF Device",
-        "Which device to send force feedback commands to.",
-        [d.name for d in fffsake.DetectFfbDevices() if not d.is_virtual],
-        is_optional=True,
-    )
-except AssertionError:
-    # Our best guess as to why this might happen:
+
+def _user_notified():
+    """Use this to track whether the user has been notified already."""
+    carrier = gremlin.event_handler.EventListener()  # Singleton.
+    if not hasattr(carrier, "_user_notified"):
+        carrier._user_notified = True
+        return False
+    return carrier._user_notified
+
+
+detected_devices = [d.name for d in fffsake.DetectFfbDevices() if not d.is_virtual]
+if not detected_devices and not _user_notified():
     gremlin.util.display_error(
         "FFFSake plugins says: No FFB-capable devices;"
-        " please connect/power on your FFB device and restart Gremlin."
+        " please connect/power on your FFB device."
     )
+_FIRST_DEVICE_PLACEHOLDER = "First FFB Device"
+option_device_selector = SelectionVariable(
+    "FF Device",
+    "Which device to send force feedback commands to.",
+    [_FIRST_DEVICE_PLACEHOLDER] + detected_devices,
+    is_optional=True,
+)
 
 PLUGIN_OPTIONS.constant_gain = option_constant_gain
 PLUGIN_OPTIONS.ramp_gain = option_ramp_gain
@@ -196,22 +206,34 @@ def MakeFffsakeOptions(plugin_options):
 # Plugin functionality.
 
 
-def StartUp(plugin_options):
-    """Start up the FFFSake plugin.
+def StartUp(plugin_options) -> bool:
+    """Starts up the FFFSake plugin. Returns False if the device isn't found.
 
     This function may not be thread-safe and should only be called inside the activation thread.
     """
-    gremlin.util.log("FFB Device selected: %s" % plugin_options.device_selector.value)
+    if plugin_options.device_selector.value == _FIRST_DEVICE_PLACEHOLDER:
+        use_first_device = True
+        err_msg = (
+            "FFFSake plugins says: No FFB-capable devices;"
+            " please connect/power on your FFB device and reactivate Gremlin."
+        )
+    else:
+        use_first_device = False
+        err_msg = f"Device (no longer?) present:{plugin_options.device_selector.value}"
     guid = None
+    activation_device = None
     for d in fffsake.DetectFfbDevices():
-        if not d.is_virtual and d.name == plugin_options.device_selector.value:
+        if not d.is_virtual and (
+            use_first_device or d.name == plugin_options.device_selector.value
+        ):
+            activation_device = d.name
             guid = d.guid
             break
     else:
-        gremlin.util.display_error(
-            "Device (no longer?) present: %s" % plugin_options.device_selector.value
-        )
-        return
+        # gremlin.util.display_error(err_msg)
+        gremlin.util.log(err_msg)
+        return False
+    gremlin.util.log(f"FFB Device selected: {activation_device}")
     if plugin_options.engine_selector.value == _FORWARDER:
         fffsake.RegisterFffsakeForwarder(guid)
     elif plugin_options.engine_selector.value == _REDUCER:
@@ -222,6 +244,7 @@ def StartUp(plugin_options):
             % plugin_options.engine_selector.value
         )
     gremlin.util.log(f"FFFSake {plugin_options.engine_selector.value} engine active")
+    return True
 
 
 def ShutDown():
@@ -248,17 +271,23 @@ class ActivationThread(threading.Thread):
         self._plugin_options = None
 
     def run(self):
+        detection_pending = True  # In one particular activation.
         try:
             while True:
                 if gremlin.event_handler.EventListener().gremlin_active:
                     plugin_options = self.plugin_options  # Lock, retrieve.
-                    if not fffsake.IsFffsakeActive() and plugin_options is not None:
+                    if (
+                        not fffsake.IsFffsakeActive()
+                        and plugin_options is not None
+                        and detection_pending
+                    ):
                         # Fix for effects being missed if they are issued before Gremlin
                         # actually decides to acquire the vJoy device.
                         for vjoy_device in VJOY_DEVICES_TO_ACQUIRE:
                             # Acquires the device.
                             gremlin.joystick_handling.VJoyProxy()[vjoy_device]
                         StartUp(plugin_options)
+                        detection_pending = False
                     if fffsake.IsFffsakeActive():
                         fffsake_options = self.fffsake_options  # Lock, retrieve.
                         if fffsake_options is not None:
@@ -266,6 +295,9 @@ class ActivationThread(threading.Thread):
                             del self.fffsake_options
                 elif fffsake.IsFffsakeActive():
                     ShutDown()
+                    detection_pending = True
+                else:
+                    detection_pending = True
                 # Better than self.daemon since we can ShutDown() before exiting.
                 if not threading.main_thread().is_alive():
                     ShutDown()
