@@ -113,7 +113,7 @@ Install and configure these:
          [Joystick Gremlin Quickstart](https://whitemagic.github.io/JoystickGremlin/quickstart)
          has more details for this step.
     2.   Switch to the `Plugins` tab. Use the `Add Plugin` button and browse to
-         the `joystick_gremlin/plugins/fffsake_gremlin_plugin.py` file,
+         the `joystick_gremlin/r13_plugins/fffsake_gremlin_plugin.py` file,
          at the location you extracted Sim Gamer Kit to.
     3.   Once the plugin has been added, click on the cog wheel for the plugin to
          open its configuration. From the `FF Device` dropdown in
@@ -123,7 +123,7 @@ Install and configure these:
          Select either the `forwarder` or the `reducer` engine. See section
          below for details. If you're not sure, start with the `reducer` engine
          if using a wheel and `forwarder` if using a joystick.
-    5.   Bind a button for `Mute/Unmute Force Feedback`. Think of this as a safety cutoff
+    5.   [**REQUIRED**] Bind a button for `Mute/Unmute Force Feedback`. Think of this as a safety cutoff
          button, to be pressed if you lose control of your FFB device. For this reason, use a button
          not on the FFB joystick/wheel. It doesn't need to be on the FFB device either.
          Once done, the plugin page should look something like the follows, minus
@@ -215,9 +215,6 @@ Both engines have the following features:
     [Indirect Input](../indirect_input/index.md))
 2.  "Slip" FFB commands when they are issued faster than the device can handle them,
     usually leading to a drop in FPS in game when using a FFB device.
-    1.   On slower CPUs, the `forwarder` engine is currently better for this. With
-         planned future optimizations, the `reducer` engine will always be the
-         superior option for this feature.
 3.  Setting gain for individual hardware effects (requires re-`Activate` in Gremlin).
 
 ## Limitations and Known Issues
