@@ -145,8 +145,7 @@ Things to look out for (in driving games; I only have a FFB wheel), even in more
 4.  Drifting should be felt, usually as a loss/reduction in steering resistance.
 
 If the `forwarder` engine is giving a better experience, this is unexpected unless
-your CPU is quite slow/starved/throttled. Please report these as well (unless
-your CPU is quite slow/starved/throttled).
+your CPU is quite slow/starved/throttled. Please report these as well.
 
 ## Game Crash with Force Feedback Enabled
 
