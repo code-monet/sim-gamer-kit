@@ -153,9 +153,12 @@ def update_gear(vjoy):
                 plugin_state.current_gear = Gear.GEAR_6
             elif y_axis > 0.7:
                 approaching_gear = Gear.GEAR_6
-    # util.log(f"Gear {plugin_state.current_gear}")
-    if approaching_gear is not None and approaching_gear != plugin_state.current_gear:
-        plugin_state.current_gear = Gear.GEAR_N
+        # util.log(f"Gear {plugin_state.current_gear}")
+        if (
+            approaching_gear is not None
+            and approaching_gear != plugin_state.current_gear
+        ):
+            plugin_state.current_gear = Gear.GEAR_N
     for gear, gear_button in GEAR_BUTTONS.items():
         device = vjoy[gear_button.value["device_id"]]
         device.button(gear_button.value["input_id"]).is_pressed = (
