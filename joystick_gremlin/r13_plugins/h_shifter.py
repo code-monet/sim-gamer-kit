@@ -33,6 +33,9 @@ gear_5 = VirtualInputVariable(
 gear_6 = VirtualInputVariable(
     "Gear 6", "vJoy button to use for gear 6", [gremlin.common.InputType.JoystickButton]
 )
+gear_7 = VirtualInputVariable(
+    "Gear 7", "vJoy button to use for gear 7", [gremlin.common.InputType.JoystickButton]
+)
 gear_r = VirtualInputVariable(
     "Reverse (output)",
     "vJoy button to use for reverse gear",
@@ -60,6 +63,11 @@ btn_reverse = PhysicalInputVariable(
     "Button to set gear to reverse. Needed because we have 6 positions only via the axes.",
     [gremlin.common.InputType.JoystickButton],
 )
+btn_7th = PhysicalInputVariable(
+    "Gear 7 (input)",
+    "Button to set gear 7. Needed because we have 6 positions only via the axes.",
+    [gremlin.common.InputType.JoystickButton],
+)
 axis_x = PhysicalInputVariable(
     "Left-right axis",
     "Left-right axis to use for H-shifter.",
@@ -73,6 +81,7 @@ axis_y = PhysicalInputVariable(
 
 decorator_n = btn_neutral.create_decorator(mode.value)
 decorator_r = btn_reverse.create_decorator(mode.value)
+decorator_7th = btn_7th.create_decorator(mode.value)
 decorator_x = axis_x.create_decorator(mode.value)
 decorator_y = axis_y.create_decorator(mode.value)
 
@@ -85,6 +94,7 @@ class Gear(enum.Enum):
     GEAR_4 = enum.auto()
     GEAR_5 = enum.auto()
     GEAR_6 = enum.auto()
+    GEAR_7 = enum.auto()
     GEAR_N = enum.auto()
     GEAR_R = enum.auto()
 
@@ -96,6 +106,7 @@ GEAR_BUTTONS = {
     Gear.GEAR_4: gear_4,
     Gear.GEAR_5: gear_5,
     Gear.GEAR_6: gear_6,
+    Gear.GEAR_7: gear_7,
     Gear.GEAR_R: gear_r,
 }
 
@@ -108,6 +119,7 @@ class PluginState:
     y_pos: float = 0
     neutral_pressed: bool = False
     reverse_pressed: bool = False
+    gear7_pressed: bool = False
 
 
 plugin_state = PluginState()
@@ -119,6 +131,8 @@ def update_gear(vjoy):
         plugin_state.current_gear = Gear.GEAR_N
     elif plugin_state.reverse_pressed:
         plugin_state.current_gear = Gear.GEAR_R
+    elif plugin_state.gear7_pressed:
+        plugin_state.current_gear = Gear.GEAR_7
     else:
         x_axis = plugin_state.x_pos
         y_axis = plugin_state.y_pos
@@ -192,4 +206,10 @@ def btn_neutral_handler(event, vjoy):
 def btn_reverse_handler(event, vjoy):
     global plugin_state
     plugin_state.reverse_pressed = event.is_pressed
+    update_gear(vjoy)
+
+@decorator_7th.button(btn_7th.input_id)
+def btn_7th_handler(event, vjoy):
+    global plugin_state
+    plugin_state.gear7_pressed = event.is_pressed
     update_gear(vjoy)
