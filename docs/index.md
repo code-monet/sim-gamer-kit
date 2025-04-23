@@ -25,9 +25,9 @@ A collection of tools for flight and driving simulation gamers on Windows.
 
 ### IndirectInput, compatibility fixes for DirectInput games and devices
 
-[IndirectInput](./indirect_input/index.md) is a DLL-replacement based video game
-compatibility fixer, focused on fixing issues seen when playing flight and racing games
-with DirectInput devices.
+[IndirectInput](./indirect_input/index.md), when added, will be a DLL-replacement based
+video game compatibility fixer, focused on fixing issues seen when playing flight and
+racing games with DirectInput devices.
 
 ## Joystick Gremlin Plugins
 

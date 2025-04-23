@@ -60,11 +60,10 @@ can kick in for games not in their list of official supported games e.g.
 3.  Incorrect FFB in most Need for Speed games.
 4.  Inability to combine or zero pedals and analog paddles
 
-The wheel is also detected as "not a wheel" (unclear if this bug
-is on the vendor or Microsoft) by some games, and a subset of these games
+The wheel is also detected as "not a wheel" by some games, and a subset of these games
 then use a different FFB logic meant as a fallback. Usually
 this results in missing or weak FFB (e.g. Need for Speed Most Wanted 2012,
-Bus Simulator 21).
+Bus Simulator 21). In `The Crew 2`, wheel configuration is disabled in the settings menu.
 
 This wheel also presents a dud "Slider" axis that doesn't map to a physical axis, and
 is unfortunately not zeroed. Usually a game where this is an issue will need you

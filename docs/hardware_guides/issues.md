@@ -20,13 +20,14 @@ Joystick Gremlin can be used to combine pedals (`Combine pedals` option in the
 Joystick Gremlin can be used to set custom arbitrary curves for pedals and other
 analog axes.
 
-## Detected as joystick
+## (Racing Games) Controller Detected "not wheel"
 
 This may not be obvious; one common sign is that some wheel configurations are
 missing in game settings. Force feedback may be missing in some other games.
-`IndirectInput` is needed to fix this.
 
-> vJoy is also detected in-game by some games as a joystick.
+> If using racing wheels directly with the game, `IndirectInput` is needed to fix this.
+
+> If using `vJoy`, see the [game guides](../game_guides/issues.md) on how to address this.
 
 ## Force Feedback causes game crash
 

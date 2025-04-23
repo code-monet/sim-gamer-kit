@@ -156,6 +156,29 @@ enabled on the device.
 
 Use `FFFSake`, either `Forwarder` or `Reducer` engine.
 
+## Requires Wheel
+
+Some games require the game controller to be detected as a "wheel" by DirectInput
+to enable full features (like setting axis curves in-game), and in some cases to
+use the device correctly (e.g. to use the "wheel" force feedback effects).
+
+### Fixes
+
+#### vJoy as "Wheel"
+
+The recommended fix is to use vJoy, configured to detect as a wheel; see the
+[fffsake setup docs](../fffsake/vjoy_configuration.md).
+
+#### IndirectInput
+
+> This could be implemented, but isn't currently planned, as it won't work with games
+> that block DLL replacement mods.
+
+#### Registry Modifications
+
+It is possible to change the device type via registry modifications and via certain Windows
+APIs, but I haven't pursued this.
+
 ## Other DirectInput (Usage) Bugs
 
 Sometimes games do not use DirectInput correctly, or there are quirks in the device
@@ -169,7 +192,8 @@ developer specific. Some examples are:
 3.  Certain features disabled in the game for your controller e.g. FFB settings
     (Dirt Rally, Crew 2), H-shifter (Dirt 3, Dirt Rally) but known to be supported
     for others.
-    1.   `IndirectInput` will likely be required.
+    1.   Some issues can be fixed via `vJoy` - see [Requires Wheel](#requires-wheel).
+    1.   For others `IndirectInput` will likely be required.
 
 ## FFB Saturation
 
