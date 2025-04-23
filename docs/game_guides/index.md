@@ -43,6 +43,9 @@ The following short forms are used to refer to common [issues](./issues.md):
     settings are advised.
 *   `FFB Crash`: The game crashes if FFB devices are plugged in, or if FFB is enabled
     in-game.
+*   `Requires Wheel`: The game requires the controller to identify as a wheel to enable
+    certain features like axis curves, force feedback, or to configure the controller
+    correctly.
 *   `IndirectInput`: The game needs the listed feature from
     [IndirectInput](../indirect_input/index.md)
 
@@ -53,14 +56,15 @@ a common issue with other Criterion racing games from this time that requires
 forced wheel detection.
 
 1.  Hardware Effects Usage: Medium
-2.  IndirectInput: Forced wheel detection
+2.  Requires Wheel - without this, force feedback in game is disabled, or only applies
+    to one side and many effects are missing.
 
 ### Bus Simulator 21
 
 A driving game that curiously uses Unreal Engine, which may be to blame for compatibility
 issues with FFB wheels:
 
-1.  IndirectInput: Forced wheel detection
+1.  Requires Wheel - without this, there may be no force feedback in game.
 
 > TODO: Game needs further study
 
@@ -68,21 +72,20 @@ issues with FFB wheels:
 
 This game supports joystick, HOTAS and racing wheel input, the latter with force feedback.
 
-1.  Slip
+1.  Slip: With force feedback wheels, FPS drops to less than 1.
 2.  Hardware Effects Usage: Medium
-3.  IndirectInput
-    1.   Forced wheel detection. Without this, in-game force feedback and wheel
-         input configuration is greyed out (fix unconfirmed).
+3.  Requires Wheel. Without this, in-game wheel configuration is greyed out. Force
+    feedback is half intensity and all axes default to "wild" curves (most noticeable
+    as a massive dead zone in steering).
 
 ### Crew Motorfest
 
-The implementation has changed since `Crew 2` but has the same issues and then one more:
+The wheel implementation has changed since `Crew 2` but has the same issues and then one more:
 
 1.  FFB Crash: `HidHide` is needed to hide the problematic controller from the game, while
     using `vJoy` to play the game.
 2.  Hardware Effects Usage: Medium
-
-FPS drop (like in previous versions of `Crew`) has not been reported for `Motorfest`.
+3.  Slip: FPS drop (like in previous versions of `Crew`) can be seen but is less extreme.
 
 ### Dirt 3
 
@@ -103,7 +106,9 @@ to be game logic.
     1.   Vendor spoof (only for H-shifters not made by a manufacturer in their
          hard-coded list). Without this, the in-game option to select
          manual transmission will be missing entirely.
-    2.   Forced wheel detection to enable full FFB configuration.
+    2.   Full FFB configuration is not available with some wheels - fix unknown.
+         TODO: Investigate creating a controller profile in the game directory as
+         a fix.
 
 ### Dirt Rally 2.0
 
@@ -131,13 +136,15 @@ Known compatibility issues:
 2.  Hardware Effects Usage: High
 3.  FFB high effect count (partial loss of effects)
 4.  FFB Saturation: Recommended **40%** for `Constant`, `Spring`, `Square` and `Sine`.
+    Without this, road effects are lost when steering forces are strong.
 5.  Don't bind handbrake to an analog axis, it can break auto-braking behavior for
     accelerator and reverse axes.
 
 ### Need for Speed: Heat
 
 One of the few racing games I have seen that simply doesn't allow you to bind
-controls!
+controls! As of 2025, racing wheels are completely broken. I'm waiting for EA to
+issue a fix, or otherwise I'll try implementing a fix in `IndirectInput`.
 
 1.  Inability to bind controls. Use Joystick Gremlin and bind as follows:
     1.   TODO Fill this section
@@ -150,7 +157,7 @@ This Criterion game is similar to their other games from this time in terms of
 DirectInput usage.
 
 1.  Hardware Effects Usage: Medium
-2.  IndirectInput: Forced wheel detection. Without this, an inferior, fallback
+2.  Requires Wheel: Without this, an inferior, fallback
     model meant for joysticks is used; many effects are missing and forces are
     applied along the Y axis.
 3.  Zeroed pedals
@@ -161,7 +168,7 @@ This Criterion game is similar to their other games from this time in terms of
 DirectInput usage.
 
 1.  Hardware Effects Usage: Medium
-2.  IndirectInput: Forced wheel detection. Without this, an inferior, fallback
+2.  Requires Wheel: Without this, an inferior, fallback
     model meant for joysticks is used; many effects are missing and forces are
     applied along the Y axis.
 
@@ -191,7 +198,7 @@ that rotates forces.
 
 1.  FFB Crash: `HidHide` is needed to hide the problematic controller from the game, while
     using `vJoy` to play the game.
-2.  (Unconfirmed) IndirectInput: Forced wheel detection
+2.  (Unconfirmed) Requires Wheel: Otherwise no force feedback in game.
 
 ## Games with generally excellent implementations
 
