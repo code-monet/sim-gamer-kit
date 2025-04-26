@@ -1,5 +1,8 @@
 # vJoy Configuration
 
+> Note: The configurations below have only been verified with DirectInput8 games on Windows 10 and 11.
+> Games using older versions of DirectInput haven't been tested.
+
 ## For Driving Games
 
 This configuration is recommended for driving games, as it allows
