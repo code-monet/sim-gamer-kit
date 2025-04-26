@@ -171,6 +171,8 @@ DirectInput usage.
 2.  Requires Wheel: Without this, an inferior, fallback
     model meant for joysticks is used; many effects are missing and forces are
     applied along the Y axis.
+3.  Weak steering forces: Especially on modern direct drive wheels with high torque.
+    Use the `Spring Coefficient` in `FFFSake` to tune your experience.
 
 > This game currently lists an incorrect fix on various online forums, a DLL replacement
 that rotates forces.

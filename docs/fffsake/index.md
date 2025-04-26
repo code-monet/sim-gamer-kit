@@ -78,11 +78,14 @@ Once you've completed the above one-time setup, future usage involves
 
 1.  Launching HidHide and ensuring the filter is enabled.
 2.  Launch Joystick Gremlin and load your desired profile.
-3.  Optional: Set gain percentages for hardware force feedback effects. Games typically
-    use a subset of these, so changing them may not have an effect. The
-    [game guides](../game_guides/index.md)
-    have recommended settings for some games. The default value is 50%. See the
-    [game issues guide](../game_guides/issues.md) for why you might want to change these.
+3.  Options:
+    1.   Set gain percentages for hardware force feedback effects. Games typically
+         use a subset of these, so changing them may not have an effect. The
+         [game guides](../game_guides/index.md)
+         have recommended settings for some games. The default value is 100%. See the
+         [game issues guide](../game_guides/issues.md) for why you might want to change these.
+    2.   Set spring coefficient for games that use the spring force and it feels weak
+         when centered but strong at the edges of the steering range.
 4.  Click on `Activate`. `FFFSake` will activate if it's a plugin loaded for this profile.
     1.  With the profile active, you can use the button you bound earlier to toggle muting.
     `FFFSake`. `Tools` > `Log Display` > `User` will show a message when `FFFSake` is
