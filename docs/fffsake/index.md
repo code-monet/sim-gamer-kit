@@ -107,6 +107,8 @@ the game or from Windows) and writes them to the physical device using DirectInp
 In this process, the common compatibility fixes, described later, are also applied.
 This engine has relatively lower CPU usage but cannot fix all compatibility issues.
 
+This engine supports force feedback joysticks (X and Y axes are force feedback).
+
 #### Reducer Engine
 
 The `reducer` engine takes FFB commands received from vJoy (coming from
@@ -124,8 +126,8 @@ following additional compatibility issues can be fixed:
 
 Both engines have the following features:
 
-1.  Fix incorrect rotation of effects on racing wheels (but see also:
-    [Indirect Input](../indirect_input/index.md))
+1.  Rotate effects if input and output FFB axes counts mismatch (but see also:
+    [vJoy configuration](./vjoy_configuration.md) to configure vJoy correctly)
 2.  "Slip" FFB commands when they are issued faster than the device can handle them,
     usually leading to a drop in FPS in game when using a FFB device.
 3.  Setting gain for individual hardware effects (requires re-`Activate` in Gremlin).
@@ -141,20 +143,11 @@ them; if you are, please in touch via
     words, it's only expected to be used for racing wheels. I don't know of any
     FFB joysticks that have mistakes in their hardware effects implementation.
 
-The following known issues and planned features will be addressed
-in a future release:
+The following known issues may be addressed in a future release but are low severity:
 
 1.  Decrease CPU usage, especially for the `reducer` engine.
-2.  Only single FFB axis devices are supported in the `forwarder` engine. In other
-    words, it's only expected to be used for racing wheels. It's relatively easy to
-    add support for (two axes) FFB joysticks, it's just currently lower
-    priority given how rare such devices are.
-3.  Some effects (friction and inertia, mainly) in the `reducer` engine could be refined.
+2.  Some effects (friction and inertia, mainly) in the `reducer` engine could be refined.
     These effects are not commonly used.
-4.  Ability to adjust gains of hardware effects via the Gremlin plugins UI for both
-    engines.
-5.  The `FFFSake` pluging may need to be removed and re-added to a profile if you
-    change your FFB device.
 
 ## Troubleshooting
 
