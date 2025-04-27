@@ -214,6 +214,19 @@ thus reducing or eliminating saturation and restoring feedback detail.
 The game guides may have recommended settings, which can be used as a starting point; per-device
 tweaking might be desired, depending on the maximum and sustained torque values for the device.
 
+## Weak Forces; Weak Spring/Steering Forces
+
+Some games use hardware effects (see [Hardware Effects Usage](#hardware-effects-usage)), and certain
+effects might feel too weak (especially if the game was designed/tested for gear/belt devices and
+you're using modern direct drive device). In these cases you could experiment with the hardware
+effect gains in `FFFSake` to tune your experience.
+
+Some driving games use the spring hardware effect for steering forces. If the force generally feels weak,
+you'd use the hardware gains as outlined above. However if the steering forces are only weak when
+the wheel is centered but feels quite strong near the edges, then you want to use the
+`Spring Coefficient`, which scales the spring gain without affecting the limits (so, the limits will
+be reached sooner as you turn the wheel).
+
 ## Inverted Force Feedback
 
 In some games, force feedback can apply in the wrong direction. The wheel/joystick will usually

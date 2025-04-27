@@ -50,77 +50,84 @@ PLUGIN_OPTIONS = PluginOptions()
 # For some reason, saving these directly to PLUGIN_OPTIONS causes them to not register.
 option_constant_gain = IntegerVariable(
     "Constant Gain %",
-    "User gain setting for all constant effects",
+    "User gain setting for all constant effects. Affects strength and limits.",
     initial_value=100,
     min_value=0,
     max_value=300,
 )
 option_ramp_gain = IntegerVariable(
     "Ramp Gain %",
-    "User gain setting for all ramp effects",
+    "User gain setting for all ramp effects. Affects strength and limits.",
     initial_value=100,
     min_value=0,
     max_value=300,
 )
 option_sine_gain = IntegerVariable(
     "Sine Gain %",
-    "User gain setting for all sine effects",
+    "User gain setting for all sine effects. Affects strength and limits.",
     initial_value=100,
     min_value=0,
     max_value=300,
 )
 option_square_gain = IntegerVariable(
     "Square Gain %",
-    "User gain setting for all square effects",
+    "User gain setting for all square effects. Affects strength and limits.",
     initial_value=100,
     min_value=0,
     max_value=300,
 )
 option_triangle_gain = IntegerVariable(
     "Triangle Gain %",
-    "User gain setting for all triangle effects",
+    "User gain setting for all triangle effects. Affects strength and limits.",
     initial_value=100,
     min_value=0,
     max_value=300,
 )
 option_sawtooth_up_gain = IntegerVariable(
     "Sawtooth Up Gain %",
-    "User gain setting for all sawtooth up effects",
+    "User gain setting for all sawtooth up effects. Affects strength and limits.",
     initial_value=100,
     min_value=0,
     max_value=300,
 )
 option_sawtooth_down_gain = IntegerVariable(
     "Sawtooth Down Gain %",
-    "User gain setting for all sawtooth down effects",
+    "User gain setting for all sawtooth down effects. Affects strength and limits.",
     initial_value=100,
     min_value=0,
     max_value=300,
 )
 option_spring_gain = IntegerVariable(
     "Spring Gain %",
-    "User gain setting for all spring effects",
+    "User gain setting for all spring effects. Affects strength and limits.",
     initial_value=100,
     min_value=0,
     max_value=300,
 )
 option_damper_gain = IntegerVariable(
     "Damper Gain %",
-    "User gain setting for all damper effects",
+    "User gain setting for all damper effects. Affects strength and limits.",
     initial_value=100,
     min_value=0,
     max_value=300,
 )
 option_inertia_gain = IntegerVariable(
     "Inertia Gain %",
-    "User gain setting for all inertia effects",
+    "User gain setting for all inertia effects. Affects strength and limits.",
     initial_value=100,
     min_value=0,
     max_value=300,
 )
 option_friction_gain = IntegerVariable(
     "Friction Gain %",
-    "User gain setting for all friction effects",
+    "User gain setting for all friction effects. Affects strength and limits.",
+    initial_value=100,
+    min_value=0,
+    max_value=300,
+)
+option_spring_coefficient = IntegerVariable(
+    "Spring Coefficient %",
+    "User coefficient for all spring effects. Affects strength without changing limits",
     initial_value=100,
     min_value=0,
     max_value=300,
@@ -179,6 +186,7 @@ PLUGIN_OPTIONS.spring_gain = option_spring_gain
 PLUGIN_OPTIONS.damper_gain = option_damper_gain
 PLUGIN_OPTIONS.inertia_gain = option_inertia_gain
 PLUGIN_OPTIONS.friction_gain = option_friction_gain
+PLUGIN_OPTIONS.spring_coefficient = option_spring_coefficient
 PLUGIN_OPTIONS.engine_selector = option_engine_selector
 PLUGIN_OPTIONS.device_selector = option_device_selector
 
@@ -199,6 +207,9 @@ def MakeFffsakeOptions(plugin_options):
     opt.engine_options.set_damper_gain(plugin_options.damper_gain.value / 100)
     opt.engine_options.set_inertia_gain(plugin_options.inertia_gain.value / 100)
     opt.engine_options.set_friction_gain(plugin_options.friction_gain.value / 100)
+    opt.engine_options.set_spring_coefficient_multiplier(
+        plugin_options.spring_coefficient.value / 100
+    )
     return opt
 
 

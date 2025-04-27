@@ -3,7 +3,8 @@
 ## Joystick as H-shifter
 
 This plugin will let you use a 2-axis joystick as a 6 position H-shifter in
-your driving game.
+your driving game. 2 additional gears (usually `7` and `Reverse`) are possible
+by assigning regular buttons.
 
 ### Setup
 
@@ -14,6 +15,8 @@ configuration is needed:
 *   `Neutral` - Physical button to set gear to neutral. Needed for self-centering axes.
 *   `Reverse (input)` - Physical button to set gear to reverse. Needed because we only
     have 6 positions via the axes.
+*   `Gear 7 (input)` - Physical button to set the 7th gear. Needed because we only
+    have 6 positions via the axes.
 *   `Left-right axis` - Physical left-right axis to use for H-shifter.
 *   `Up-down axis` - Physical up-down axis to use for H-shifter.
 *   `Gear 1` - vJoy button to use for gear 1.
@@ -22,6 +25,7 @@ configuration is needed:
 *   `Gear 4` - vJoy button to use for gear 4.
 *   `Gear 5` - vJoy button to use for gear 5.
 *   `Gear 6` - vJoy button to use for gear 6.
+*   `Gear 7` - vJoy button to use for gear 7.
 *   `Reverse (output)` - vJoy button to use for reverse.
 
 An experimental setting can be offered in a future release, currently not implemented:
@@ -31,7 +35,7 @@ An experimental setting can be offered in a future release, currently not implem
     without user input (e.g. if you dialed up the clutch or loosened the
     spring). This is not how I use it, but you might want to experiment.
 
-### In game usage
+### In-game usage
 
 I suggest enabling the profile with this plugin, open "Input Viewer"
 in Joystick Gremlin, and play with the joystick to induce H-shifter transitions.
@@ -51,8 +55,9 @@ which is used to emulate a brief "neutral" transition when changing gears.
 Some games care about this.
 
 The `Neutral` binding can be used shift to neutral. The `Reverse (input)`
-binding can be used to bind an extra gear; usually this will be "reverse".
-Some games might require you to press the `Neutral` button before `Reverse`.
+and `Gear 7 (input)`
+bindings can be used to bind extra gears; usually this will be "reverse" and "gear 7".
+Some games might require you to press the `Neutral` button before `Reverse` or `Gear 7`.
 
 ### Known Compatible Games
 
@@ -63,3 +68,4 @@ to work with:
 *   American Truck Simulator
 *   Euro Truck Simualtor 2
 *   F1 2018 (probably later F1 games should also work)
+*   Crew 2 (including vehicles with 7 gears)
