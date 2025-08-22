@@ -81,6 +81,12 @@ This issue is usually only seen with wheel *pedals* and analog *paddles*
     allow separate pedals to be bound and used to e.g. do a burnout). In this
     case use Joystick Gremlin to zero the pedals.
 
+Unfortunately, some devices have axes that may be disconnected in your setup (e.g. a
+clutch axis, but you didn't buy the clutch), and this axis could interfere with
+your game (e.g. immediately get bound to a control, or continuous scrolling in
+menus). In this case the only option is to use HidHide to hide the real device,
+and only map the axes you need to vJoy using something like Joystick Gremlin.    
+
 ## Combined Pedals
 
 In addition to pedals being zeroed (see above section), they sometimes also need
