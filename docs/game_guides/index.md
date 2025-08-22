@@ -127,6 +127,15 @@ This game does not have force feedback. It (probably still) does rumble on Xinpu
 
 > TODO: Game available but study pending
 
+### Need for Speed: Underground 2 (2004)
+
+Finicky to set up this game with a wheel, but once done works well.
+
+1.  Combined pedals (separate zeroed pedals can be assigned but didn't work).
+2.  Hardware Effects Usage: High
+3.  Requires "wheel" DirectInput device, otherwise controller bindings menu
+    will be glitched out (and there will be no FFB).
+
 ### Need for Speed: Most Wanted (2005)
 
 An "arcade" racing game with one of the better force feedback effects for its time.
