@@ -121,6 +121,11 @@ following additional compatibility issues can be fixed:
     [types of FFB issues](../game_guides/issues.md).
 2.  More accurate "slip" if the application command rate exceeds what the device can
     handle.
+3.  Compatibility fixes:
+    1.  `Compatibility: Restore minimized forces` to restore missing forces in e.g.
+        `RaceRoom Experience`.
+    2.  `Compatibility: Force restart on update` to fix periodic sway in e.g.
+        `RaceRoom Experience.`.
 
 #### Common Features
 
