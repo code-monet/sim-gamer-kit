@@ -132,6 +132,16 @@ option_spring_coefficient = IntegerVariable(
     min_value=0,
     max_value=300,
 )
+option_compat_unminimize = BoolVariable(
+    "Compatibility: Restore minimized forces",
+    "Compatibility fix for games that unintentionally have zeroed forces that only work on some devices",
+    initial_value=False,
+)
+option_compat_force_restart = BoolVariable(
+    "Compatibility: Force restart on update",
+    "Compatibility fix for games that expect certain forces to be restarted when updated",
+    initial_value=False,
+)
 
 
 def _process_registry_value(self, value):
@@ -189,6 +199,8 @@ PLUGIN_OPTIONS.friction_gain = option_friction_gain
 PLUGIN_OPTIONS.spring_coefficient = option_spring_coefficient
 PLUGIN_OPTIONS.engine_selector = option_engine_selector
 PLUGIN_OPTIONS.device_selector = option_device_selector
+PLUGIN_OPTIONS.compat_unminimize = option_compat_unminimize
+PLUGIN_OPTIONS.compat_force_restart = option_compat_force_restart
 
 
 def MakeFffsakeOptions(plugin_options):
@@ -209,6 +221,12 @@ def MakeFffsakeOptions(plugin_options):
     opt.engine_options.set_friction_gain(plugin_options.friction_gain.value / 100)
     opt.engine_options.set_spring_coefficient_multiplier(
         plugin_options.spring_coefficient.value / 100
+    )
+    opt.engine_options.set_compat_unminimize_forces(
+        plugin_options.compat_unminimize.value
+    )
+    opt.engine_options.set_compat_e_uprest(
+        plugin_options.compat_force_restart.value
     )
     return opt
 

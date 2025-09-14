@@ -47,7 +47,20 @@ The following short forms are used to refer to common [issues](./issues.md):
     certain features like axis curves, force feedback, or to configure the controller
     correctly.
 *   `IndirectInput`: The game needs the listed feature from
-    [IndirectInput](../indirect_input/index.md)
+    [IndirectInput](../indirect_input/index.md).
+
+
+### 1nsane
+
+Very early Codemasters game, crashes or has compatiblity issues with some wheels.
+
+1.  Hardware Effects Usage: High
+
+Other quirks:
+
+1.  Game will crash when binding pedals or analog axes that are not one of: `X`, `Y`, `Z`
+    (and probably `Xrot` is also okay).
+    1.  In Joystick Gremlin you can remap your other physical axes to one of these on vJoy.
 
 ### Burnout Paradise
 
@@ -186,12 +199,26 @@ DirectInput usage.
 > This game currently lists an incorrect fix on various online forums, a DLL replacement
 that rotates forces.
 
-### Race Room
+### RaceRoom Experience
 
-> TODO: Game available but study pending
+There are compatibility issues with several wheels.
 
 1.  FFB Crash: `HidHide` is needed to hide the problematic controller from the game, while
     using `vJoy` to play the game.
+2.  Hardware Effects Usage: High
+
+Other quirks:
+
+1.  Alt-tabbing the game doesn't reset and recreate FFB, unlike most games. Instead, restart
+    from garage.
+2.  In FFFSake, use `Reducer` engine with options:
+    1.  Compatibility: Restore minimized forces
+    2.  Compatibility: Force restart on update
+3.  You'll want to increase `FFFSake` spring coefficient and/or gain (I found 150% for both to be
+    more than enough).
+    The way to check is, in game, turn your wheel past the in-game steering turn angle limit,
+    and you should feel your wheel resist quite strongly (better to do while driving slowly rather
+    than completely stopped).
 
 ### Richard Burns' Rally
 
