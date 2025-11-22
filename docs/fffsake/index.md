@@ -69,7 +69,10 @@ via
 
 ## Setup
 
-Budget about 15-45 minutes for [the one-time setup](setup.md).
+If you already use (and want to keep using) Joystick Gremlin R13, budget about
+15-45 minutes for [the one-time setup](setup_r13.md).
+
+Otherwise, you're probably better off using [my fork of the (pre-release) Joystick Gremlin R14](setup_r14.md).
 
 ## Usage
 
