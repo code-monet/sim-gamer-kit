@@ -14,6 +14,9 @@ a "matching" version. This release was tested against the
 [2.2.2.0 release](https://github.com/BrunnerInnovation/vJoy); newer releases
 should work, older releases might work.
 
-Currently only an x86 Python pre-compiled module is offered, since Joystick Gremlin
-is expected to be the only way people use it. If you're a developer interested in
-x64 builds or a DLL, please open a GitHub ticket.
+Compiled Python extensions need to match the architecture and version of the interpreter;
+the offered extensions are for Joystick Gremlin:
+1.  R13: x86, Python 3.6
+2.  R14: x64, Python 3.13
+
+If you're a developer interested in other builds or a DLL, please open a GitHub ticket.
