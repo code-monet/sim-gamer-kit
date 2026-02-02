@@ -34,7 +34,7 @@ accelerator get mapped to X, Y and Rz axes and you get the maximum 8 axes:
 
 <img src="../resources/vjoy_conf_wheel_ideal.png" width="390" height="550">
 
-However this isn't currently supported by Joystick Gremlin R13.
+However this isn't currently supported by Joystick Gremlin.
 
 ## What about "Clutch"?
 

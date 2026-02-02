@@ -7,7 +7,7 @@ download them all:
 
 1.  vJoy virtual joystick driver. Please download the latest signed
     driver from
-    [Brunner Innovation's fork on GitHub](https://github.com/BrunnerInnovation/vJoy/releases). Download both the setup executable as well as the `SDK.zip` archive.
+    [Brunner Innovation's fork on GitHub](https://github.com/BrunnerInnovation/vJoy/releases).
 2.  [My fork of Joystick Gremlin](https://github.com/code-monet/JoystickGremlin/releases)
 3.  (Strongly Recommended) [HidHide](https://github.com/nefarius/HidHide/releases),
     a kernel-mode filter driver to hide physical devices from games. You
@@ -29,16 +29,16 @@ Install and configure these:
 
 5.  Plug in your FFB device, then launch and configure Joystick Gremlin:
     1.   Suggestion for new users: verify that your plugged in physical device shows
-         up; switch to that tab. From the `Actions` menu, create a 1:1 mapping. Scroll down
-         the list and verify that a 1:1 mapping was created (usually works
-         as long as you start with a clean slate i.e. zero existing mappings).
+         up; switch to that tab. From the `Tools` menu, run the `Auto Mapper`. Once done,
+         scroll down the list of inputs and verify that a 1:1 mapping was created.
     2.   Switch to the `Scripts` tab. Use the `Add Script` button and browse to
          the `joystick_gremlin\_internal\user_scripts\fffsake.py` file,
          at the location you extracted Joystick Gremlin to.
     3.   Once the plugin has been added, click on the cog wheel for the plugin to
          open its configuration. From the `FF Device` dropdown in
-         plugin configuration, ensure your FFB capable device is selected. Most
-         people would have exactly one such device.
+         plugin configuration, ensure your FFB capable device is shown; most
+         people would have exactly one such device. You can either select it, or leave the
+         default to use the first detected FFB-capable device.
     4.   Select either the `forwarder` or the `reducer` engine. See section
          below for details. If you're not sure, start with the `reducer` engine
          if using a wheel and `forwarder` if using a joystick.
@@ -53,8 +53,7 @@ Install and configure these:
     1.   Decide if you want to use list all the games you want to use with vJoy
          (**allowlist**, "Inverse cloak" unchecked), or list all the games and
          applications you won't be using with vJoy (**blocklist**,
-         "Inverse cloak" checked). I use the blocklist because that list is shorter
-         for me.
+         "Inverse cloak" checked). The example below shows the blocklist approach.
     2.   Add paths to all the applications that belong to the above list. For
          games with launchers, you want the game binary path, not the launcher.
          I typically launch the game, and then use Windows Task

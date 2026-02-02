@@ -1,4 +1,6 @@
-# FFFSake Setup with Joystick Gremlin R13
+# FFFSake Setup with Joystick Gremlin
+
+NOTE: R13 is no longer supported; [R14 is recommended](setup_r14.md).
 
 Budget about 15-45 minutes for this one-time setup.
 
