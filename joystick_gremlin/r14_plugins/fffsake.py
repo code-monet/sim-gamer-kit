@@ -3,13 +3,28 @@
 Joystick Gremlin R14 plugin for FFFSake.
 """
 
+import inspect
+import os
+import sys
+
 from gremlin import signal
 from gremlin import types
 from gremlin import user_script
 from gremlin import util
 from gremlin.ui import backend
 
-from fffsake import fffsake
+current_path = os.path.abspath(inspect.getfile(inspect.currentframe()))
+while True:
+    head, tail = os.path.split(current_path)
+    if tail == "joystick_gremlin":
+        if head not in sys.path:
+            # Insert instead of appending in case the user is using my
+            # fork of Gremlin that already has FFFSake.
+            sys.path.insert(0, head)
+        break
+    current_path = head
+
+from fffsake.x64 import fffsake
 
 from vjoy import vjoy
 
