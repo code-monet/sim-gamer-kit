@@ -69,7 +69,7 @@ via
 
 ## Setup
 
-New users can start quickest by using [my fork of Joystick Gremlin R14](setup_r14.md). If you
+New users can [start quickest](setup_r14.md) by using my fork of Joystick Gremlin R14. If you
 cannot or don't want to use my fork, you'll have to patch your Gremlin installation manually
 (see R13 instructions, next).
 

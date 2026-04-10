@@ -78,7 +78,8 @@ Install and configure these:
          ![HidHide Application Configuration for blocklist!](../resources/hid_hide_apps.png)
          1.   If using an **allowlist**, make sure to add paths to Joystick
               Gremlin as well as the control panel/configuration application
-              for your physical device.
+              for your physical device. This includes software like Logitech GHUB,
+              Moza Pit House, Fanatec App, TurtleBeach VelocityOne Tuner etc.
     3.   On the devices tab, select the physical device (needs to be plugged
          in to show up) that you want to use through Joystick Gremlin.
     4.   Check "Enable filtering" and unplug-replug (or power off/on) the
