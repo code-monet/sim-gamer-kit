@@ -5,6 +5,9 @@
 
 ## For Driving Games
 
+> Note: This requires a patched version of `vJoyConf.exe`. In the Sim Gamer Kit, you
+> can find it at `vjoy/bin/vJoyConf.exe`.
+
 This configuration is recommended for driving games, as it allows
 vJoy to be detected as a wheel by DirectInput. It should also work fine with non-driving games.
 
