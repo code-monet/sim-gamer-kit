@@ -165,13 +165,14 @@ Known compatibility issues:
 ### Need for Speed: Heat
 
 One of the few racing games I have seen that simply doesn't allow you to bind
-controls! As of 2025, racing wheels are completely broken. I'm waiting for EA to
-issue a fix, or otherwise I'll try implementing a fix in `IndirectInput`.
+controls! Wheel support in the game was broken for some of 2025, but as of April 2026
+it is working again.
 
 1.  Inability to bind controls. Use Joystick Gremlin and bind as follows:
     1.   TODO Fill this section
 2.  Zeroed paddles (not pedals). TODO Confirm this.
 3.  TODO: Fill out FFB information
+4.  Requires "wheel" DirectInput device, otherwise there will be no FFB.
 
 ### Need for Speed: Hot Pursuit (2010)
 

@@ -1,0 +1,13 @@
+site_name: Sim Gamer Kit
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - FFFSake: fffsake/index.md
+  - IndirectInput: indirect_input/index.md
+  - Gremlin Plugins:
+    - H-Shifter: joystick_gremlin_plugins/h_shifter.md
+    - Handbrake: joystick_gremlin_plugins/handbrake.md
+  - Game Guides: game_guides/index.md
+  - Hardware Guides: hardware_guides/index.md

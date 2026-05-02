@@ -14,7 +14,7 @@ physical device while your game is actually being played with a
 vJoy virtual joystick, which is in turn being fed with inputs by an
 application like Joystick Gremlin.
 
-# What is this for?
+## What is this for?
 
 > tl;dr if you're having a wheel/joystick binding, input, or FFB
 problem, [Joystick Gremlin](https://whitemagic.github.io/JoystickGremlin)
