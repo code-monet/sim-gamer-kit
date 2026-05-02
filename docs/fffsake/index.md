@@ -161,6 +161,15 @@ The following known issues may be addressed in a future release but are low seve
 
 ## Troubleshooting
 
+### Common Issues Checklist
+
+1. Did you install the correct version of the vJoy driver? See [setup](#setup).
+2. Ensure you are using my fork of Joystick Gremlin OR patching vanilla Gremlin with
+   the correct vJoy DLL; see [setup](#setup).
+3. (Racing games) Ensure you are using my patched vJoy configuration tool and the
+   [recommended configuration](./vjoy_configuration.md).
+4. Have you rebooted your computer at least once and confirmed the issue persists?
+
 ### General
 
 The plugin publishes some messages via the Joystick Gremlin logging system, which you can
