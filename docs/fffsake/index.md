@@ -69,12 +69,15 @@ via
 
 ## Setup
 
-New users can [start quickest](setup_r14.md) by using my fork of Joystick Gremlin R14. If you
-cannot or don't want to use my fork, you'll have to patch your Gremlin installation manually
-(see R13 instructions, next).
+New users, and existing users on Joystick Gremlin R14.3 (or newer), follow
+[these instructions](setup_r14.md).
 
-If you already use (and want to keep using) Joystick Gremlin R13, budget about
-15-45 minutes for [the one-time setup](setup_manual.md).
+If you must use a version older than R14.3
+(including R13), you'll have to
+[patch your Gremlin installation manually](setup_manual.md).
+
+> Prior to R14.3, this doc recommened using my fork of Gremlin. I have stopped making releases
+from my fork as there's no longer a need to patch Gremlin.
 
 ## Usage
 
@@ -84,17 +87,20 @@ Once you've completed the above one-time setup, future usage involves
 1.  Launching HidHide and ensuring the filter is enabled.
 2.  Launch Joystick Gremlin and load your desired profile.
 3.  Options:
-    1.   Set gain percentages for hardware force feedback effects. Games typically
-         use a subset of these, so changing them may not have an effect. The
-         [game guides](../game_guides/index.md)
-         have recommended settings for some games. The default value is 100%. See the
-         [game issues guide](../game_guides/issues.md) for why you might want to change these.
-    2.   Set spring coefficient for games that use the spring force and it feels weak
-         when centered but strong at the edges of the steering range.
+    1.  Set gain percentages for hardware force feedback effects. Games typically
+        use a subset of these, so changing them may not have an effect. The
+        [game guides](../game_guides/index.md)
+        have recommended settings for some games. The default value is 100%. See the
+        [game issues guide](../game_guides/issues.md) for why you might want to change these.
+    2.  Increase spring coefficient past 100 for games that use the spring
+        force and it feels weak
+        when centered but strong at the edges of the steering range.
+    3.  Additional compatibility options are offered; don't enable these unless
+        you know you need them for the game you're playing.
 4.  Click on `Activate`. `FFFSake` will activate if it's a plugin loaded for this profile.
     1.  With the profile active, you can use the button you bound earlier to toggle muting.
-    `FFFSake`. `Tools` > `Log Display` > `User` will show a message when `FFFSake` is
-    turned on or off.
+    `FFFSake`. `Tools` > `Log Display` > `User` will show a message when `FFFSake`
+    is turned on or off.
 
 At this point you can launch your game and configure it for vJoy. You should be
 able to select and configure it inside the game as you would a physical controller.
@@ -150,8 +156,9 @@ them; if you are, please in touch via
 
 1.  Only one vJoy device is currently supported.
 2.  Only single FFB axis devices are supported in the `reducer` engine. In other
-    words, it's only expected to be used for racing wheels. I don't know of any
-    FFB joysticks that have mistakes in their hardware effects implementation.
+    words, it's only expected to be used for racing wheels. FFB Joystick support
+    is feasible, just not been needed yet (`forwarder` engine can be used
+    meanwhile).
 
 The following known issues may be addressed in a future release but are low severity:
 
@@ -164,7 +171,7 @@ The following known issues may be addressed in a future release but are low seve
 ### Common Issues Checklist
 
 1. Did you install the correct version of the vJoy driver? See [setup](#setup).
-2. Ensure you are using my fork of Joystick Gremlin OR patching vanilla Gremlin with
+2. Ensure you are using Joystick Gremlin >14.3 OR patching vanilla Gremlin with
    the correct vJoy DLL; see [setup](#setup).
 3. (Racing games) Ensure you are using my patched vJoy configuration tool and the
    [recommended configuration](./vjoy_configuration.md).
