@@ -8,8 +8,10 @@ download them all:
 1.  vJoy virtual joystick driver. Please download the latest signed
     driver from
     [Brunner Innovation's fork on GitHub](https://github.com/BrunnerInnovation/vJoy/releases).
-2.  [My fork of Joystick Gremlin](https://github.com/code-monet/JoystickGremlin/releases)
-3.  (Strongly Recommended) [HidHide](https://github.com/nefarius/HidHide/releases),
+2.  [Joystick Gremlin](https://github.com/WhiteMagic/JoystickGremlin/releases),
+    R14.3 or newer.
+3.  [Sim Gamer Kit](https://github.com/code-monet/sim-gamer-kit/releases)
+4.  (Strongly Recommended) [HidHide](https://github.com/nefarius/HidHide/releases),
     a kernel-mode filter driver to hide physical devices from games. You
     will probably have a lot of trouble configuring your game to use vJoy,
     or using `FFFSake`, if you don't hide the physical device redirected through
@@ -20,20 +22,21 @@ Install and configure these:
 1.  Install vJoy. You can skip the reboot, doing it after the next step.
 2.  Install HidHide and reboot.
 3.  Extract Joystick Gremlin to a directory of your choice.
-4.  Launch the `Configure vJoy` app from the Start Menu and configure vJoy. The
+4.  Extract the Sim Gamer Kit to a directory of your choice.
+5.  Launch the `Configure vJoy` app from the Start Menu and configure vJoy. The
     recommendation on the Joystick Gremlin page is a bit outdated; instead,
     I suggest following [this guide](vjoy_configuration.md) if you play mostly driving games.
     For everyone else, the recommended default is:
 
 ![vJoy Configuration!](../resources/vjoy_conf.png)
 
-5.  Plug in your FFB device, then launch and configure Joystick Gremlin:
+6.  Plug in your FFB device, then launch and configure Joystick Gremlin:
     1.   Suggestion for new users: verify that your plugged in physical device shows
          up; switch to that tab. From the `Tools` menu, run the `Auto Mapper`. Once done,
          scroll down the list of inputs and verify that a 1:1 mapping was created.
     2.   Switch to the `Scripts` tab. Use the `Add Script` button and browse to
-         the `joystick_gremlin\_internal\user_scripts\fffsake.py` file,
-         at the location you extracted Joystick Gremlin to.
+         the `joystick_gremlin\r14_plugins\fffsake.py` file,
+         at the location you extracted Sim Gamer Kit to.
     3.   Once the plugin has been added, click on the cog wheel for the plugin to
          open its configuration. From the `FF Device` dropdown in
          plugin configuration, ensure your FFB capable device is shown; most
@@ -48,7 +51,7 @@ Install and configure these:
          Once done, the plugin page should look something like follows: ![FFFSake Plugin!](../resources/fffsake_gremlin_plugin_r14.png)
     6.   Save the profile.
     7.   Close Joystick Gremlin for the next step.
-6.  Launch and
+7.  Launch and
     [configure HidHide](https://github.com/nefarius/HidHide?tab=readme-ov-file#user-guide):
     1.   Decide if you want to use list all the games you want to use with vJoy
          (**allowlist**, "Inverse cloak" unchecked), or list all the games and
@@ -69,7 +72,7 @@ Install and configure these:
     4.   Check "Enable filtering" and unplug-replug (or power off/on) the
          device.
          ![HidHide Devices!](../resources/hid_hide_devices.png)
-7.  Launch Joystick Gremlin, ensure that your physical device is still there.
+8.  Launch Joystick Gremlin, ensure that your physical device is still there.
     If not, double check that you added the Joystick Gremlin application path
     correctly (if you're using the allowlist approach) in HidHide. Then click on
     "Enable" button.

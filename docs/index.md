@@ -6,10 +6,7 @@ A collection of tools for flight and driving simulation gamers on Windows.
 
 ## Installation
 
-If you're only interested in FFFSake and you're new to Joystick Gremlin
-R14, you can [download and use my fork](./fffsake/setup_r14.md) that has all the plugins included.
-
-For everyone else:
+"Installation" consists of downloading and extracting the archive.
 
 1.  Download the [latest release](https://github.com/code-monet/sim-gamer-kit/releases/latest)
 2.  Extract the archive to a directory of your choice.
