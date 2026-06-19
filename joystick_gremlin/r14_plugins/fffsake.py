@@ -7,6 +7,7 @@ import inspect
 import os
 import sys
 
+from gremlin import error
 from gremlin import signal
 from gremlin import types
 from gremlin import user_script
@@ -290,8 +291,11 @@ def StartUp(plugin_options: PluginOptions) -> bool:
     # Fix for effects being missed if they are issued before Gremlin
     # actually decides to acquire the vJoy device.
     for vjoy_device in VJOY_DEVICES_TO_ACQUIRE:
-        # Acquires the device.
-        vjoy.VJoyProxy()[vjoy_device]
+        try:
+            # Acquires the device.
+            vjoy.VJoyProxy()[vjoy_device]
+        except error.VJoyConcurrencyError as e:
+            util.log(f"Couldn't re-acquire vJoy device {vjoy_device}, but should be okay to proceed: {e}")
 
     if plugin_options.engine_selector.value == _FORWARDER:
         fffsake.RegisterFffsakeForwarder(guid)
