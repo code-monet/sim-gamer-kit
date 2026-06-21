@@ -1,0 +1,1036 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Common Compatibility Issues - Sim Gamer Kit</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#common-compatibility-issues" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Sim Gamer Kit" class="md-header__button md-logo" aria-label="Sim Gamer Kit" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Sim Gamer Kit
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Common Compatibility Issues
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Sim Gamer Kit" class="md-nav__button md-logo" aria-label="Sim Gamer Kit" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Sim Gamer Kit
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fffsake/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FFFSake
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../indirect_input/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IndirectInput
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gremlin Plugins
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Gremlin Plugins
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../joystick_gremlin_plugins/h_shifter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    H-Shifter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../joystick_gremlin_plugins/handbrake/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Handbrake
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Game Guides
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware_guides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware Guides
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#game-loop-blocked-by-force-feedback-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Game Loop Blocked By Force Feedback Commands
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Game Loop Blocked By Force Feedback Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zeroed-pedals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zeroed Pedals
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Zeroed Pedals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixes_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#combined-pedals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Combined Pedals
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Combined Pedals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixes_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hardware-effects-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware Effects Usage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hardware Effects Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixes_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#game-crash-with-force-feedback-enabled" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Game Crash with Force Feedback Enabled
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Game Crash with Force Feedback Enabled">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixes_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requires-wheel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requires Wheel
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requires Wheel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixes_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fixes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vjoy-as-wheel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        vJoy as "Wheel"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indirectinput" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IndirectInput
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registry-modifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registry Modifications
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-directinput-usage-bugs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Other DirectInput (Usage) Bugs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ffb-saturation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FFB Saturation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="FFB Saturation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixes_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#weak-forces-weak-springsteering-forces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Weak Forces; Weak Spring/Steering Forces
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inverted-force-feedback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inverted Force Feedback
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Inverted Force Feedback">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixes_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="common-compatibility-issues">Common Compatibility Issues</h1>
+<p>This document describes input or force feedback compatibility issues
+seen with DirectInput (some gamepads, and most joysticks, HOTAS sets, and
+racing wheels) devices and games.</p>
+<blockquote>
+<p>Controllers with "rumble" or "vibration" as opposed to force feedback are
+usually Xinput devices and not DirectInput. This document does not apply to
+them.</p>
+</blockquote>
+<h2 id="game-loop-blocked-by-force-feedback-commands">Game Loop Blocked By Force Feedback Commands</h2>
+<p>The typical way this issue manifests is, loss of frame rate only when
+using FFB devices (wheels or joystick). Another possible way this could manifest is,
+laggy force feedback, but there are no reports of this yet. This happens
+because the game loop is slowed down or thrown out of sync by DirectInput
+FFB commands blocking for longer than the application expects.</p>
+<blockquote>
+<p>When the game is not in focus, this issue will go away, but this might
+be difficult to observe unless you're using windowed or borderless mode in
+the game. MSI Afterburner's FPS-vs-time graph can also be used to catch this
+behavior.</p>
+</blockquote>
+<h3 id="fixes">Fixes</h3>
+<ol>
+<li>It is possible for such delays to come from USB hubs - try connecting
+    the device directly to a USB port on the motherboard. Try different
+    ports as well. USB 2 vs 3 shouldn't matter much, but worth trying anyway.</li>
+<li>It is possible for such delays to happen because of a slow/throttling CPU.
+    Try closing non-essential applications. Also check that your CPU is
+    performing as expected.</li>
+<li>Sometimes this is unavoidable with the physical device you are using;
+    you will need to use <a href="../../fffsake/">FFFSake</a>.</li>
+</ol>
+<h2 id="zeroed-pedals">Zeroed Pedals</h2>
+<p>Technically speaking, analog axes have a resting position and an associated value
+that the application sees. For "legacy controllers", analog axes would give a value
+of 0 in their resting position - a zeroed axis. Contemporary devices have largely
+ditched this convention for axes that are resting at an end of their travel range
+rather than the center. Instead they typically give a large positive or negative
+reading, which can throw off games not expecting this.</p>
+<p>Practically speaking, for modern:</p>
+<ul>
+<li>Wheels:<ul>
+<li>The wheel axis is zeroed</li>
+<li>The pedals are <strong>not</strong> zeroed</li>
+<li>Analog pedals are <strong>not</strong> zeroed</li>
+</ul>
+</li>
+<li>Flight controllers:<ul>
+<li>Joystick axes are zeroed</li>
+<li>Throttles are zeroed, but usually unsprung so this doesn't really apply.</li>
+<li>Yaw pedals are zeroed</li>
+<li>Toe brake pedals are (probably, need to confirm) <strong>not</strong> zeroed</li>
+</ul>
+</li>
+</ul>
+<p>If you use such a device with a game that expects zeroed axes, then in the game
+control binding menu, you'll see one or more of:</p>
+<ul>
+<li>Some random axis (quickly) gets bound when you try to rebind a control</li>
+<li>Some games use the wheel and pedal controls to navigate menus. You might
+    find the menus navigating themselves.</li>
+</ul>
+<p>If you manage to bind controls and then play the game, you'll probably see
+the following in game:</p>
+<ul>
+<li>Accelerator and brake are ineffective or applied together (usually causing
+    unintended burnout and donuts).</li>
+<li>Camera may be pointing the wrong way (left or right or behind).</li>
+</ul>
+<h3 id="fixes_1">Fixes</h3>
+<p>This issue is usually only seen with wheel <em>pedals</em> and analog <em>paddles</em>
+(not shifter paddles, those are technically buttons).</p>
+<ol>
+<li>The hardware manufacturer device control panel or app may an option to
+    "combine pedals", try that.</li>
+<li>That option may not be available, or worse
+    than having separate zeroed pedals (some games require zeroed pedals but
+    allow separate pedals to be bound and used to e.g. do a burnout). In this
+    case use Joystick Gremlin to zero the pedals.</li>
+</ol>
+<p>Unfortunately, some devices have axes that may be disconnected in your setup (e.g. a
+clutch axis, but you didn't buy the clutch), and this axis could interfere with
+your game (e.g. immediately get bound to a control, or continuous scrolling in
+menus). In this case the only option is to use HidHide to hide the real device,
+and only map the axes you need to vJoy using something like Joystick Gremlin.    </p>
+<h2 id="combined-pedals">Combined Pedals</h2>
+<p>In addition to pedals being zeroed (see above section), they sometimes also need
+to be combined. Usually this presents as: the game only lets you bind a single axis
+for both accelerator and brake. You will also typically run into this issue if you
+try to use modern racing pedals for yaw control in a flight game.</p>
+<h3 id="fixes_2">Fixes</h3>
+<p>Same as for zeroed pedals, except if using Joystick Gremlin, use
+"combined pedals" from the <code>Actions</code> menu. In R14 Gremlin it should like this
+(combines brake <code>axis 5</code> with accelerator <code>axis 4</code> and outputs to vJoy axis
+<code>X rotation</code>):</p>
+<p><img alt="gremlin_merge_accelerator_brake" src="../../resources/gremlin_merge_accelerator_brake.png" /></p>
+<h2 id="hardware-effects-usage">Hardware Effects Usage</h2>
+<p>HID PID devices are supposed to implement a number of hardware effects, which
+games can use via the
+<a href="https://learn.microsoft.com/en-us/previous-versions/windows/desktop/ee417541(v=vs.85)">DirectInput API</a>. The simplest of these is the Constant effect, which can be used to
+emulate all other effects. Game developers with advanced physics tend to go
+this way, especially more recent games that expect more powerful CPUs. Games
+with simpler physics engines, or games designed for older CPUs instead prefer to
+use hardware effects.</p>
+<p>A number of compatibility issues arise from usage of hardware effects because:</p>
+<ol>
+<li>Of bugs in DirectInput, which is a deprecated API not seeing further
+    bug fixes.</li>
+<li>Incorrect usage of the DirectInput APIs by games, game engines, or
+    input libraries wrapping DirectInput (Logitech's SDK, SDL, ...?).</li>
+<li>Incorrect interpretation of the complex PID protocol by hardware makers.</li>
+<li>With contemporary games mostly moving to using the <code>Constant</code> effect only
+    (and sometimes <code>Damper</code>), hardware makers have unfortunately started
+    neglecting the other built-in effects, implementing them partially or
+    incorrectly.</li>
+</ol>
+<p>Of the above, 1 and 2 are addressed in the next section, while 3 and 4 belong
+to this section. They can be difficult for the typical gamer to discover, but
+some signs are:</p>
+<ol>
+<li>Seemingly nonsensical force feedback effects mismatched with in-game events.</li>
+<li>Extremely weak effects</li>
+<li>Missing effects</li>
+</ol>
+<p>Again, for most of these, a typical gamer wouldn't know what to expect and
+therefore wouldn't know if something is wrong.</p>
+<h3 id="fixes_3">Fixes</h3>
+<p>Try using the <code>Reducer</code> engine from <code>FFFSake</code> and play the game for a bit. Compare
+your experience with the <code>forwarder</code> engine. If the former is giving a better
+experience, you are running into this issue! Please report the game and wheel/joystick via
+<a href="https://github.com/code-monet/sim-gamer-kit/discussions">GitHub Discussions</a>!</p>
+<p>Things to look out for (in driving games; I only have a FFB wheel), even in more
+"arcady" games:</p>
+<ol>
+<li>Driving over rough terrain should cause rumble.</li>
+<li>Crashing into objects should cause a sharp kick.</li>
+<li>Steering resistance should apply, usually stronger at higher speeds and may or
+    may not be abset when stopped.<ol>
+<li>It should always be counter to the direction you're steering, and it should
+    apply in both directions.</li>
+</ol>
+</li>
+<li>Drifting should be felt, usually as a loss/reduction in steering resistance.</li>
+</ol>
+<p>If the <code>forwarder</code> engine is giving a better experience, this is unexpected unless
+your CPU is quite slow/starved/throttled. Please report these as well.</p>
+<h2 id="game-crash-with-force-feedback-enabled">Game Crash with Force Feedback Enabled</h2>
+<p>Some games crash if a force feedback device is plugged in, or if force feedback is
+enabled on the device.</p>
+<h3 id="fixes_4">Fixes</h3>
+<p>Use <code>FFFSake</code>, either <code>Forwarder</code> or <code>Reducer</code> engine.</p>
+<h2 id="requires-wheel">Requires Wheel</h2>
+<p>Some games require the game controller to be detected as a "wheel" by DirectInput
+to enable full features (like setting axis curves in-game), and in some cases to
+use the device correctly (e.g. to use the "wheel" force feedback effects).</p>
+<h3 id="fixes_5">Fixes</h3>
+<h4 id="vjoy-as-wheel">vJoy as "Wheel"</h4>
+<p>The recommended fix is to use vJoy, configured to detect as a wheel; see the
+<a href="../../fffsake/vjoy_configuration/">fffsake setup docs</a>.</p>
+<h4 id="indirectinput">IndirectInput</h4>
+<blockquote>
+<p>This could be implemented, but isn't currently planned, as it won't work with games
+that block DLL replacement mods.</p>
+</blockquote>
+<h4 id="registry-modifications">Registry Modifications</h4>
+<p>It is possible to change the device type via registry modifications and via certain Windows
+APIs, but I haven't pursued this.</p>
+<h2 id="other-directinput-usage-bugs">Other DirectInput (Usage) Bugs</h2>
+<p>Sometimes games do not use DirectInput correctly, or there are quirks in the device
+drivers, leading to obscure bugs. These are relatively rare, and tend to be game or
+developer specific. Some examples are:</p>
+<ol>
+<li>Loss of some or all effects in games that do have FFB<ol>
+<li>Can be fixed using <code>FFFSake</code>.</li>
+</ol>
+</li>
+<li>Game effects feeling <em>wrong</em> (vague, I know).<ol>
+<li>Might be fixed using <code>FFFSake</code>.</li>
+</ol>
+</li>
+<li>Certain features disabled in the game for your controller e.g. FFB settings
+    (Dirt Rally, Crew 2), H-shifter (Dirt 3, Dirt Rally) but known to be supported
+    for others.<ol>
+<li>Some issues can be fixed via <code>vJoy</code> - see <a href="#requires-wheel">Requires Wheel</a>.</li>
+<li>For others <code>IndirectInput</code> will likely be required.</li>
+</ol>
+</li>
+</ol>
+<h2 id="ffb-saturation">FFB Saturation</h2>
+<p>Force feedback saturation can occur when multiple force feedback effects are active
+simultaneously, and their combined strength exceeds the maximum force the hardware
+can produce. This might be an intentional choice by the game in some cases.</p>
+<p>With saturation, there will be a partial loss of feedback detail. For example, when
+steering over rough ground, the steering strength might significantly mask the terrain
+effects.</p>
+<h3 id="fixes_6">Fixes</h3>
+<p>To mitigate saturation, you can adjust the gain of individual hardware effects in <code>FFFSake</code>.
+By reducing the gain of specific effects, their contribution to the overall force is lessened,
+thus reducing or eliminating saturation and restoring feedback detail.</p>
+<p>The game guides may have recommended settings, which can be used as a starting point; per-device
+tweaking might be desired, depending on the maximum and sustained torque values for the device.</p>
+<h2 id="weak-forces-weak-springsteering-forces">Weak Forces; Weak Spring/Steering Forces</h2>
+<p>Some games use hardware effects (see <a href="#hardware-effects-usage">Hardware Effects Usage</a>), and certain
+effects might feel too weak (especially if the game was designed/tested for gear/belt devices and
+you're using modern direct drive device). In these cases you could experiment with the hardware
+effect gains in <code>FFFSake</code> to tune your experience.</p>
+<p>Some driving games use the spring hardware effect for steering forces. If the force generally feels weak,
+you'd use the hardware gains as outlined above. However if the steering forces are only weak when
+the wheel is centered but feels quite strong near the edges, then you want to use the
+<code>Spring Coefficient</code>, which scales the spring gain without affecting the limits (so, the limits will
+be reached sooner as you turn the wheel).</p>
+<h2 id="inverted-force-feedback">Inverted Force Feedback</h2>
+<p>In some games, force feedback can apply in the wrong direction. The wheel/joystick will usually
+be hard to control in these cases. For wheels, you'll notice that steering resistance is
+actually in the opposite direction. The wheel/joystick might oscillate wildly.</p>
+<h3 id="fixes_7">Fixes</h3>
+<p>This <em>could</em> be fixed using <code>FFFSake</code>, but this is not currently implemented as I have
+not seen a game that needs this. When I have heard of this happening, the developer is
+on the hook for fixing it and usually follows through.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
