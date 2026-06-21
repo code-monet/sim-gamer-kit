@@ -101,7 +101,7 @@ Same as for zeroed pedals, except if using Joystick Gremlin, use
 (combines brake `axis 5` with accelerator `axis 4` and outputs to vJoy axis
 `X rotation`):
 
-<img src="../resources/gremlin_merge_accelerator_brake.png">
+![gremlin_merge_accelerator_brake](../resources/gremlin_merge_accelerator_brake.png)
 
 ## Hardware Effects Usage
 

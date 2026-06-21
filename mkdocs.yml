@@ -11,3 +11,7 @@ nav:
     - Handbrake: joystick_gremlin_plugins/handbrake.md
   - Game Guides: game_guides/index.md
   - Hardware Guides: hardware_guides/index.md
+
+markdown_extensions:
+  - attr_list
+
