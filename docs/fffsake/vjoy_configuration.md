@@ -11,14 +11,14 @@
 This configuration is recommended for driving games, as it allows
 vJoy to be detected as a wheel by DirectInput. It should also work fine with non-driving games.
 
-<img src="../resources/vjoy_conf_wheel.png" width="390" height="550">
+![vjoy_conf_wheel](../resources/vjoy_conf_wheel.png){: width="390" height="550" }
 
 ## All Other Games
 
 The above configuration *might* cause an issue with non-driving games, in which case, use the
 following instead (the only difference is that `Accelerator`, `Brake` and `Steering` are not enabled):
 
-<img src="../resources/vjoy_conf.png" width="390" height="550">
+![vjoy_conf](../resources/vjoy_conf.png){: width="390" height="550" }
 
 ## Technical Details
 
@@ -35,7 +35,7 @@ map one of the first 8 axes in-game as accelerator, brake, clutch and steering.
 This is the optimal configuration for driving games i.e. maximum axes enabled; steering, brake and
 accelerator get mapped to X, Y and Rz axes and you get the maximum 8 axes:
 
-<img src="../resources/vjoy_conf_wheel_ideal.png" width="390" height="550">
+![vjoy_conf_wheel_ideal](../resources/vjoy_conf_wheel_ideal.png){: width="390" height="550" }
 
 However this isn't currently supported by Joystick Gremlin.
 
