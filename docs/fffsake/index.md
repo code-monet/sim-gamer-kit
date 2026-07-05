@@ -95,7 +95,9 @@ Once you've completed the above one-time setup, future usage involves
     2.  Increase spring coefficient past 100 for games that use the spring
         force and it feels weak
         when centered but strong at the edges of the steering range.
-    3.  Additional compatibility options are offered; don't enable these unless
+    3.  Adjust the friction coefficient if the friction effect doesn't feel right (too much jerk -> reduce).
+        The ideal setting depends on the device, its torque rating, and (for wheels) your chosen max turn degrees.
+    4.  Additional compatibility options are offered; don't enable these unless
         you know you need them for the game you're playing.
 4.  Click on `Activate`. `FFFSake` will activate if it's a plugin loaded for this profile.
     1.  With the profile active, you can use the button you bound earlier to toggle muting.
@@ -163,8 +165,7 @@ them; if you are, please in touch via
 The following known issues may be addressed in a future release but are low severity:
 
 1.  Decrease CPU usage, especially for the `reducer` engine.
-2.  Some effects (friction and inertia, mainly) in the `reducer` engine could be refined.
-    These effects are not commonly used.
+2.  Inertia effect (not commonly used) in the `reducer` engine could be refined.
 
 ## Troubleshooting
 

@@ -98,7 +98,14 @@ option_device_selector = user_script.SelectionVariable(
     default_index=0,
 )
 
-# TODO Change back to ints once they can be edited more easily.
+option_device_gain = user_script.IntegerVariable(
+    "Device Gain %",
+    "User gain setting for all effects. May have no effect with forwarding engine.",
+    is_optional=True,
+    initial_value=100,
+    min_value=0,
+    max_value=100,
+)
 option_constant_gain = user_script.IntegerVariable(
     "Constant Gain %",
     "User gain setting for all constant effects. Affects strength and limits.",
@@ -195,6 +202,14 @@ option_spring_coefficient = user_script.IntegerVariable(
     min_value=0,
     max_value=300,
 )
+option_friction_coefficient = user_script.IntegerVariable(
+    "Friction Coefficient %",
+    "Adjusts friction feeling; depends on device torque setting",
+    is_optional=True,
+    initial_value=50,
+    min_value=0,
+    max_value=1000,
+)
 option_compat_unminimize = user_script.BoolVariable(
     "Compatibility: Restore minimized forces",
     "Compatibility fix for games that unintentionally have zeroed forces that only work on some devices",
@@ -207,7 +222,16 @@ option_compat_force_restart = user_script.BoolVariable(
     is_optional=True,
     initial_value=False,
 )
+option_device_update_period_ms = user_script.IntegerVariable(
+    "Device Update Period (ms)",
+    "Device update period in milliseconds. Allowed range: [1, 34].",
+    is_optional=True,
+    initial_value=5,
+    min_value=1,
+    max_value=34,
+)
 
+PLUGIN_OPTIONS.device_gain = option_device_gain
 PLUGIN_OPTIONS.constant_gain = option_constant_gain
 PLUGIN_OPTIONS.ramp_gain = option_ramp_gain
 PLUGIN_OPTIONS.sine_gain = option_sine_gain
@@ -219,36 +243,45 @@ PLUGIN_OPTIONS.spring_gain = option_spring_gain
 PLUGIN_OPTIONS.damper_gain = option_damper_gain
 PLUGIN_OPTIONS.inertia_gain = option_inertia_gain
 PLUGIN_OPTIONS.friction_gain = option_friction_gain
+PLUGIN_OPTIONS.friction_coefficient = option_friction_coefficient
 PLUGIN_OPTIONS.spring_coefficient = option_spring_coefficient
 PLUGIN_OPTIONS.engine_selector = option_engine_selector
 PLUGIN_OPTIONS.device_selector = option_device_selector
 PLUGIN_OPTIONS.compat_unminimize = option_compat_unminimize
 PLUGIN_OPTIONS.compat_force_restart = option_compat_force_restart
+PLUGIN_OPTIONS.device_update_period_ms = option_device_update_period_ms
 
 
 def MakeFffsakeOptions(plugin_options):
     opt = fffsake.FffsakeOptions()
-    opt.engine_options.set_device_gain(1)
-    opt.engine_options.set_constant_gain(plugin_options.constant_gain.value / 100)
-    opt.engine_options.set_ramp_gain(plugin_options.ramp_gain.value / 100)
-    opt.engine_options.set_sine_gain(plugin_options.sine_gain.value / 100)
-    opt.engine_options.set_square_gain(plugin_options.square_gain.value / 100)
-    opt.engine_options.set_triangle_gain(plugin_options.triangle_gain.value / 100)
-    opt.engine_options.set_sawtooth_up_gain(plugin_options.sawtooth_up_gain.value / 100)
-    opt.engine_options.set_sawtooth_down_gain(
+    opt.device_options.set_device_gain(plugin_options.device_gain.value / 100)
+    opt.device_options.set_constant_gain(plugin_options.constant_gain.value / 100)
+    opt.device_options.set_ramp_gain(plugin_options.ramp_gain.value / 100)
+    opt.device_options.set_sine_gain(plugin_options.sine_gain.value / 100)
+    opt.device_options.set_square_gain(plugin_options.square_gain.value / 100)
+    opt.device_options.set_triangle_gain(plugin_options.triangle_gain.value / 100)
+    opt.device_options.set_sawtooth_up_gain(plugin_options.sawtooth_up_gain.value / 100)
+    opt.device_options.set_sawtooth_down_gain(
         plugin_options.sawtooth_down_gain.value / 100
     )
-    opt.engine_options.set_spring_gain(plugin_options.spring_gain.value / 100)
-    opt.engine_options.set_damper_gain(plugin_options.damper_gain.value / 100)
-    opt.engine_options.set_inertia_gain(plugin_options.inertia_gain.value / 100)
-    opt.engine_options.set_friction_gain(plugin_options.friction_gain.value / 100)
-    opt.engine_options.set_spring_coefficient_multiplier(
+    opt.device_options.set_spring_gain(plugin_options.spring_gain.value / 100)
+    opt.device_options.set_damper_gain(plugin_options.damper_gain.value / 100)
+    opt.device_options.set_inertia_gain(plugin_options.inertia_gain.value / 100)
+    opt.device_options.set_friction_gain(plugin_options.friction_gain.value / 100)
+    opt.device_options.set_spring_coefficient_multiplier(
         plugin_options.spring_coefficient.value / 100
     )
-    opt.engine_options.set_compat_unminimize_forces(
+    opt.device_options.set_friction_coefficient_multiplier(
+        # Actual math is * 10 / 100 for default coefficient 10x scaling.
+        plugin_options.friction_coefficient.value / 10
+    )
+    opt.device_options.set_compat_unminimize_forces(
         plugin_options.compat_unminimize.value
     )
-    opt.engine_options.set_compat_e_uprest(plugin_options.compat_force_restart.value)
+    # Currently this option is only used for debugging. Users should probably leave this at True.
+    opt.device_options.set_compat_unminimize_conditions(True)
+    opt.device_options.set_compat_e_uprest(plugin_options.compat_force_restart.value)
+    opt.set_device_update_period_ms(plugin_options.device_update_period_ms.value)
     return opt
 
 
@@ -364,7 +397,7 @@ def ffb_toggle_handler(event):
         fffsake_options = MakeFffsakeOptions(PLUGIN_OPTIONS)
         if _plugin_state().should_mute():
             util.log("Force feedback unmute requested")
-            fffsake_options.engine_options.set_device_gain(0)
+            fffsake_options.device_options.set_device_gain(0)
         else:
             util.log("Force feedback mute requested")
         fffsake.SetFffsakeOptions(fffsake_options)
