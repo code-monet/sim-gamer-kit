@@ -61,6 +61,8 @@ Other quirks:
 1.  Game will crash when binding pedals or analog axes that are not one of: `X`, `Y`, `Z`
     (and probably `Xrot` is also okay).
     1.  In Joystick Gremlin you can remap your other physical axes to one of these on vJoy.
+2.  Disconnect or hide all other controllers (using HidHide), or the game might not allow you to bind certain axes.
+3.  While the game allows separate gas and brake axes, menu nav works better if you used `Combined pedals`.
 
 ### Burnout Paradise
 
