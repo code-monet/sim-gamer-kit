@@ -4,7 +4,9 @@ theme:
 
 nav:
   - Home: index.md
-  - FFFSake: fffsake/index.md
+  - FFFSake:
+    - Overview: fffsake/index.md
+    - Configuration Options: fffsake/options.md
   - IndirectInput: indirect_input/index.md
   - Gremlin Plugins:
     - H-Shifter: joystick_gremlin_plugins/h_shifter.md

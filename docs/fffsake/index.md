@@ -86,19 +86,9 @@ Once you've completed the above one-time setup, future usage involves
 
 1.  Launching HidHide and ensuring the filter is enabled.
 2.  Launch Joystick Gremlin and load your desired profile.
-3.  Options:
-    1.  Set gain percentages for hardware force feedback effects. Games typically
-        use a subset of these, so changing them may not have an effect. The
-        [game guides](../game_guides/index.md)
-        have recommended settings for some games. The default value is 100%. See the
-        [game issues guide](../game_guides/issues.md) for why you might want to change these.
-    2.  Increase spring coefficient past 100 for games that use the spring
-        force and it feels weak
-        when centered but strong at the edges of the steering range.
-    3.  Adjust the friction coefficient if the friction effect doesn't feel right (too much jerk -> reduce).
-        The ideal setting depends on the device, its torque rating, and (for wheels) your chosen max turn degrees.
-    4.  Additional compatibility options are offered; don't enable these unless
-        you know you need them for the game you're playing.
+3.  For supported options, see the [Configuration Options](options.md) page for details.
+    1.  Specify `FF Device Type` for your connect FFB device.
+    2.  Additional settings are typically tuned on a per-game basis.
 4.  Click on `Activate`. `FFFSake` will activate if it's a plugin loaded for this profile.
     1.  With the profile active, you can use the button you bound earlier to toggle muting.
     `FFFSake`. `Tools` > `Log Display` > `User` will show a message when `FFFSake`
@@ -111,44 +101,38 @@ able to select and configure it inside the game as you would a physical controll
 
 `FFFSake` has two "engines" that connect the FFB commands received by the vJoy
 device to your physical FFB-capable controller. They do this in rather different
-ways, as described below.
+ways, as described below. Both engines support wheels (1 FFB axis) as well as joysticks
+(2 FFB axes).
 
-#### Forwarder Engine
+> `Reducer` engine is recommended for standard usage.
 
-The `forwarder` engine takes FFB commands received from vJoy (coming from
-the game or from Windows) and writes them to the physical device using DirectInput.
-In this process, the common compatibility fixes, described later, are also applied.
-This engine has relatively lower CPU usage but cannot fix all compatibility issues.
+#### Reducer and Forwarder Common Features
 
-This engine supports force feedback joysticks (X and Y axes are force feedback).
+1.  "Slip" FFB commands when they are issued faster than the device can handle them,
+    usually leading to a drop in FPS in game when using a FFB device.
+2.  Setting gain for individual hardware effects (requires re-`Activate` in Gremlin).
 
 #### Reducer Engine
 
 The `reducer` engine takes FFB commands received from vJoy (coming from
 the game or from Windows) and "reduces" them to a stream of constant forces, which
-are written to the physical device using DirectInput. This way the above common and
-following additional compatibility issues can be fixed:
+are written to the physical device using DirectInput. This way the following
+compatibility issues can be fixed:
 
 1.  Incorrect [hardware effects](https://learn.microsoft.com/en-us/previous-versions/windows/desktop/ee417541(v=vs.85))
     in the physical device. See also
     [types of FFB issues](../game_guides/issues.md).
-2.  More accurate "slip" if the application command rate exceeds what the device can
-    handle.
-3.  Compatibility fixes:
+2.  Compatibility fixes:
     1.  `Compatibility: Restore minimized forces` to restore missing forces in e.g.
         `RaceRoom Experience`.
     2.  `Compatibility: Force restart on update` to fix periodic sway in e.g.
         `RaceRoom Experience.`.
 
-#### Common Features
+#### Forwarder Engine
 
-Both engines have the following features:
-
-1.  Rotate effects if input and output FFB axes counts mismatch (but see also:
-    [vJoy configuration](./vjoy_configuration.md) to configure vJoy correctly)
-2.  "Slip" FFB commands when they are issued faster than the device can handle them,
-    usually leading to a drop in FPS in game when using a FFB device.
-3.  Setting gain for individual hardware effects (requires re-`Activate` in Gremlin).
+The `Forwarder` engine takes FFB commands received from vJoy (coming from
+the game or from Windows) and writes them to the physical device using DirectInput.
+It generally will not help with compatibility issues.
 
 ## Limitations and Known Issues
 
@@ -156,18 +140,17 @@ The following limitations exist because I don't know of any gamers who are affec
 them; if you are, please in touch via
 [GitHub Discussions](https://github.com/code-monet/sim-gamer-kit/discussions)
 
-1.  Only one vJoy device is currently supported.
-2.  Only single FFB axis devices are supported in the `reducer` engine. In other
-    words, it's only expected to be used for racing wheels. FFB Joystick support
-    is feasible, just not been needed yet (`forwarder` engine can be used
-    meanwhile).
+1.  Only the first vJoy device is currently supported.
 
 The following known issues may be addressed in a future release but are low severity:
 
-1.  Decrease CPU usage, especially for the `reducer` engine.
-2.  Inertia effect (not commonly used) in the `reducer` engine could be refined.
+1.  Inertia effect (not commonly used) in the `reducer` engine could be refined.
 
 ## Troubleshooting
+
+### vJoy not detected as wheel
+
+See [vJoy configuration](./vjoy_configuration.md) to configure vJoy correctly.
 
 ### Common Issues Checklist
 
