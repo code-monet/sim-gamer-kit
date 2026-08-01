@@ -1,6 +1,6 @@
 """© 2025 Code Monet <code.monet@proton.me>
 
-Joystick Gremlin R14 plugin for FFFSake.
+Joystick Gremlin R14+ plugin for FFFSake.
 """
 
 import inspect

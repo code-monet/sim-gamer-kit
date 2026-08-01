@@ -60,7 +60,7 @@ While there are other applications with similar functionality, feeding vJoy with
 inputs from DirectInput devices, none of them appear to be maintained by the time of
 this writing.
 [Joystick Gremlin](https://whitemagic.github.io/JoystickGremlin) is actively being
-developed; we will be using the latest R14 version.
+developed; we will be using the latest R15 version.
 
 Support could be added for other vJoy feeders, especially if someone is willing to
 help integrate `FFFSake` as a DLL or Python module into the feeder. Please get in touch
