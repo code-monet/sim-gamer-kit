@@ -17,6 +17,6 @@ should work, older releases might work.
 Compiled Python extensions need to match the architecture and version of the interpreter;
 the offered extensions are for Joystick Gremlin:
 1.  R13: x86, Python 3.6
-2.  R14: x64, Python 3.13
+2.  R14+: x64, Python 3.13
 
 If you're a developer interested in other builds or a DLL, please open a GitHub ticket.

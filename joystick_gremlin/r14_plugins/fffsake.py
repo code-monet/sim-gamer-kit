@@ -1,6 +1,6 @@
 """© 2025 Code Monet <code.monet@proton.me>
 
-Joystick Gremlin R14 plugin for FFFSake.
+Joystick Gremlin R14+ plugin for FFFSake.
 """
 
 import inspect
@@ -95,6 +95,15 @@ option_device_selector = user_script.SelectionVariable(
     "Which device to send force feedback commands to.",
     is_optional=True,
     option_list=[_FIRST_DEVICE_PLACEHOLDER] + detected_devices,
+    default_index=0,
+)
+_WHEEL = "Wheel"
+_JOYSTICK = "Joystick"
+option_device_type_selector = user_script.SelectionVariable(
+    "FF Device Type",
+    "(Reducer only) Whether the device is a FF wheel or joystick.",
+    is_optional=True,
+    option_list=[_WHEEL, _JOYSTICK],
     default_index=0,
 )
 
@@ -222,6 +231,15 @@ option_compat_force_restart = user_script.BoolVariable(
     is_optional=True,
     initial_value=False,
 )
+_Y_AXIS_HANDLING_AUTO = "Auto"
+_Y_AXIS_HANDLING_ROTATE_TO_X = "Rotate to X"
+option_y_axis_handling_selector = user_script.SelectionVariable(
+    "Y-Axis Forces Handling",
+    "(Debugging only) How to handle Y-axis forces",
+    is_optional=True,
+    option_list=[_Y_AXIS_HANDLING_AUTO, _Y_AXIS_HANDLING_ROTATE_TO_X],
+    default_index=0,
+)
 option_device_update_period_ms = user_script.IntegerVariable(
     "Device Update Period (ms)",
     "Device update period in milliseconds. Allowed range: [1, 34].",
@@ -247,8 +265,10 @@ PLUGIN_OPTIONS.friction_coefficient = option_friction_coefficient
 PLUGIN_OPTIONS.spring_coefficient = option_spring_coefficient
 PLUGIN_OPTIONS.engine_selector = option_engine_selector
 PLUGIN_OPTIONS.device_selector = option_device_selector
+PLUGIN_OPTIONS.device_type_selector = option_device_type_selector
 PLUGIN_OPTIONS.compat_unminimize = option_compat_unminimize
 PLUGIN_OPTIONS.compat_force_restart = option_compat_force_restart
+PLUGIN_OPTIONS.y_axis_handling_selector = option_y_axis_handling_selector
 PLUGIN_OPTIONS.device_update_period_ms = option_device_update_period_ms
 
 
@@ -281,6 +301,13 @@ def MakeFffsakeOptions(plugin_options):
     # Currently this option is only used for debugging. Users should probably leave this at True.
     opt.device_options.set_compat_unminimize_conditions(True)
     opt.device_options.set_compat_e_uprest(plugin_options.compat_force_restart.value)
+    if plugin_options.y_axis_handling_selector.value == _Y_AXIS_HANDLING_ROTATE_TO_X:
+        opt.y_forces_handling = fffsake.YForcesHandling.ROTATE_TO_X
+    elif plugin_options.y_axis_handling_selector.value == _Y_AXIS_HANDLING_AUTO:
+        opt.y_forces_handling = fffsake.YForcesHandling.AUTO
+    else:
+        util.log("Unknown Y-axis handling selector value")
+        opt.y_forces_handling = fffsake.YForcesHandling.AUTO
     opt.set_device_update_period_ms(plugin_options.device_update_period_ms.value)
     return opt
 
@@ -333,11 +360,18 @@ def StartUp(plugin_options: PluginOptions) -> bool:
     if plugin_options.engine_selector.value == _FORWARDER:
         fffsake.RegisterFffsakeForwarder(guid)
     elif plugin_options.engine_selector.value == _REDUCER:
-        fffsake.RegisterFffsakeReducer(guid)
+        if plugin_options.device_type_selector.value == _WHEEL:
+            fffsake.RegisterFffsakeReducer(guid, fffsake.UserReportedDeviceType.FFB_WHEEL)
+        elif plugin_options.device_type_selector.value == _JOYSTICK:
+            fffsake.RegisterFffsakeReducer(guid, fffsake.UserReportedDeviceType.FFB_JOYSTICK)
+        else:
+            util.log(
+                f"FFFSake plugin: device type not known to plugin: {plugin_options.device_type_selector.value}"
+            )
+            return False
     else:
         util.log(
-            "FFFSake plugin: Unknown engine selected: %s"
-            % plugin_options.engine_selector.value
+            f"FFFSake plugin: Unknown engine selected: {plugin_options.engine_selector.value}"
         )
         return False
     if fffsake.IsFffsakeActive():

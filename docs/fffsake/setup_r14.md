@@ -1,4 +1,4 @@
-# FFFSake Setup with Joystick Gremlin R14
+# FFFSake Setup with Joystick Gremlin R14+
 
 Budget about 15 minutes for this one-time setup.
 
@@ -34,6 +34,10 @@ Install and configure these:
     1.   Suggestion for new users: verify that your plugged in physical device shows
          up; switch to that tab. From the `Tools` menu, run the `Auto Mapper`. Once done,
          scroll down the list of inputs and verify that a 1:1 mapping was created.
+
+    > Always map the FFB axis (X for wheels, XY for joysticks) 1:1 from your physical device to vJoy.
+    > Similarly, bind any FFB trigger buttons 1:1 (very few games use trigger buttons, though).
+
     2.   Switch to the `Scripts` tab. Use the `Add Script` button and browse to
          the `joystick_gremlin\r14_plugins\fffsake.py` file,
          at the location you extracted Sim Gamer Kit to.

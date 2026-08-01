@@ -97,7 +97,7 @@ try to use modern racing pedals for yaw control in a flight game.
 ### Fixes
 
 Same as for zeroed pedals, except if using Joystick Gremlin, use
-"combined pedals" from the `Actions` menu. In R14 Gremlin it should like this
+"combined pedals" from the `Actions` menu. In R14+ Gremlin it should look like this
 (combines brake `axis 5` with accelerator `axis 4` and outputs to vJoy axis
 `X rotation`):
 
