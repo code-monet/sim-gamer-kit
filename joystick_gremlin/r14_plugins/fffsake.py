@@ -292,8 +292,7 @@ def MakeFffsakeOptions(plugin_options):
         plugin_options.spring_coefficient.value / 100
     )
     opt.device_options.set_friction_coefficient_multiplier(
-        # Actual math is * 10 / 100 for default coefficient 10x scaling.
-        plugin_options.friction_coefficient.value / 10
+        plugin_options.friction_coefficient.value / 100
     )
     opt.device_options.set_compat_unminimize_forces(
         plugin_options.compat_unminimize.value
@@ -346,7 +345,10 @@ def StartUp(plugin_options: PluginOptions) -> bool:
         # util.display_error(err_msg)
         util.log(err_msg)
         return False
-    util.log(f"FFB Device selected: {activation_device}")
+    util.log(
+        f"FFB Device selected: {activation_device}, with {d.axes} axes, {d.buttons} buttons, {d.hats} hats. "
+        f"FFB on X axis: {'Yes' if d.x_is_ffb else 'No'}, Y axis: {'Yes' if d.y_is_ffb else 'No'}"
+    )
 
     # Fix for effects being missed if they are issued before Gremlin
     # actually decides to acquire the vJoy device.
