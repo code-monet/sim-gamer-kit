@@ -6,7 +6,9 @@ nav:
   - Home: index.md
   - FFFSake:
     - Overview: fffsake/index.md
+    - Setup (R14+): fffsake/setup_r14.md
     - Configuration Options: fffsake/options.md
+    - vJoy Configuration: fffsake/vjoy_configuration.md
   - IndirectInput: indirect_input/index.md
   - Gremlin Plugins:
     - H-Shifter: joystick_gremlin_plugins/h_shifter.md
@@ -16,4 +18,3 @@ nav:
 
 markdown_extensions:
   - attr_list
-
