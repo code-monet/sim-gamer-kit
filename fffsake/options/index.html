@@ -1,0 +1,1054 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../setup_r14/">
+      
+      
+        <link rel="next" href="../vjoy_configuration/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Configuration Options - Sim Gamer Kit</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#configuration-options" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Sim Gamer Kit" class="md-header__button md-logo" aria-label="Sim Gamer Kit" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Sim Gamer Kit
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Configuration Options
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Sim Gamer Kit" class="md-nav__button md-logo" aria-label="Sim Gamer Kit" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Sim Gamer Kit
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FFFSake
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    FFFSake
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup_r14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup (R14+)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration Options
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration Options
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#engine-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Engine Selection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#device-selection-and-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Device Selection and Settings
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Device Selection and Settings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gain-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gain Settings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coefficient-multipliers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Coefficient Multipliers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compatibility-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compatibility Options
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Debugging Options
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vjoy_configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    vJoy Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../indirect_input/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IndirectInput
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gremlin Plugins
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Gremlin Plugins
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../joystick_gremlin_plugins/h_shifter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    H-Shifter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../joystick_gremlin_plugins/handbrake/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Handbrake
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../game_guides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Game Guides
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware_guides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware Guides
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#engine-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Engine Selection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#device-selection-and-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Device Selection and Settings
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Device Selection and Settings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gain-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gain Settings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coefficient-multipliers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Coefficient Multipliers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compatibility-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compatibility Options
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Debugging Options
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="configuration-options">Configuration Options</h1>
+<p>FFFSake provides the following options, exposed via the Joystick Gremlin plugin.</p>
+<p>Quickstart:</p>
+<ol>
+<li>Set <code>FF Device Type</code> to match your device.</li>
+<li>Select <code>FF Device</code> if you have multiple FFB devices connected.</li>
+<li>Set <code>Device Gain %</code> to a comfortable value (recommend leaving hardware gain setting, via the vendor's control panel/app, at maximum).</li>
+</ol>
+<p>Then, as you play specific games, you can visit the <a href="../../game_guides/">game guides</a> for recommended settings and compatibility fixes.</p>
+<hr />
+<h2 id="engine-selection">Engine Selection</h2>
+<p>Most people should use the <code>Reducer</code> engine. <code>Forwarder</code> will continue to be provided
+for debugging purposes and to help understand game compatiblity issues not yet captured in the <code>Reducer</code> engine.</p>
+<hr />
+<h2 id="device-selection-and-settings">Device Selection and Settings</h2>
+<p>Allows selecting the device, and setting device-global options.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Option</th>
+<th style="text-align: left;">Values</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>FF Device</code></td>
+<td style="text-align: left;"><code>First FFB Device</code>, <device 1>, ...</td>
+<td style="text-align: left;">Which device to send force feedback commands to.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>FF Device Type</code></td>
+<td style="text-align: left;"><code>Wheel</code>, <code>Joystick</code></td>
+<td style="text-align: left;">(Reducer only) Whether the device is a FF wheel or joystick.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Device Gain %</code></td>
+<td style="text-align: left;"><code>[0, 100]</code></td>
+<td style="text-align: left;">User gain setting for all effects. May have no effect with forwarding engine.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="gain-settings">Gain Settings</h3>
+<p>Gains scale the intensity of individual force effects. On a per-game basis, these can be used to enhance certain effects, improve comfort, and in some cases, avoid saturating effects (leading to loss of fidelity/feedback). More details in the <a href="../../game_guides/issues/">game issues guide</a>.</p>
+<p>Games typically use a subset of these, so changing them may not have an effect. The <a href="../../game_guides/">game guides</a> have recommended settings for some games. Default value is 100%.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Option</th>
+<th style="text-align: left;">Values</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>Constant Gain %</code></td>
+<td style="text-align: left;"><code>[0, 300]</code></td>
+<td style="text-align: left;">Constant forces can be used for anything and everything.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Ramp Gain %</code></td>
+<td style="text-align: left;"><code>[0, 300]</code></td>
+<td style="text-align: left;">Used for slow rise or fall effects.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Sine Gain %</code></td>
+<td style="text-align: left;"><code>[0, 300]</code></td>
+<td style="text-align: left;">Used for uneven ground effects, aerodynamics, oscillation.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Square Gain %</code></td>
+<td style="text-align: left;"><code>[0, 300]</code></td>
+<td style="text-align: left;">Used for gear grinding, stairs, rough terrain.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Triangle Gain %</code></td>
+<td style="text-align: left;"><code>[0, 300]</code></td>
+<td style="text-align: left;">Used similar to square.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Sawtooth Up Gain %</code></td>
+<td style="text-align: left;"><code>[0, 300]</code></td>
+<td style="text-align: left;">Ratcheting effects, weapon kick.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Sawtooth Down Gain %</code></td>
+<td style="text-align: left;"><code>[0, 300]</code></td>
+<td style="text-align: left;">Used similar to sawtooth up.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Spring Gain %</code></td>
+<td style="text-align: left;"><code>[0, 300]</code></td>
+<td style="text-align: left;">Used for counter steer, or to generally center the axes.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Damper Gain %</code></td>
+<td style="text-align: left;"><code>[0, 300]</code></td>
+<td style="text-align: left;">Used to prevent oscillation, and provide a friction-like effect.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Inertia Gain %</code></td>
+<td style="text-align: left;"><code>[0, 300]</code></td>
+<td style="text-align: left;">Used to emulate device internal friction - rarely used.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Friction Gain %</code></td>
+<td style="text-align: left;"><code>[0, 300]</code></td>
+<td style="text-align: left;">Used to emulate device mass - rarely used.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="coefficient-multipliers">Coefficient Multipliers</h3>
+<p>Coefficient multipliers adjust the feeling of effects that are typically tuned by hardware manufacturers; but since the
+reducer engine re-implements these effects, we need to tune them ourselves.
+Coefficient multipliers apply on top of other gains. Adjust gains if the effect feels weak all the time; adjust coefficients if the effect feels "wrong" or uneven.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Option</th>
+<th style="text-align: left;">Values</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>Spring Coefficient %</code></td>
+<td style="text-align: left;"><code>[0, 300]</code></td>
+<td style="text-align: left;">Tune to get sufficiently strong counter steer (in games that use spring for it) near the center of rotation.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Friction Coefficient %</code></td>
+<td style="text-align: left;"><code>[0, 1000]</code></td>
+<td style="text-align: left;">Tune to get a good friction feeling (not too weak, but not too gritty/backlashing either).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="compatibility-options">Compatibility Options</h3>
+<p>Options to fix compatibility issues stemming from non-standard or buggy behavior in specific games.
+Unless needed, these should be left to the default value.
+See the <a href="../../game_guides/">Game guides</a> for recommended settings.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Option</th>
+<th style="text-align: left;">Values</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>Compatibility: Restore minimized forces</code></td>
+<td style="text-align: left;"><code>True</code>, <code>False</code></td>
+<td style="text-align: left;">When certain forces are unintentionally zero, this will unminimize them.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Compatibility: Force restart on update</code></td>
+<td style="text-align: left;"><code>True</code>, <code>False</code></td>
+<td style="text-align: left;">When the game expects certain forces to be restarted on each update.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="debugging-options">Debugging Options</h3>
+<p>Most users shouldn't need to change these from their default values.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Option</th>
+<th style="text-align: left;">Values</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>Device Update Period (ms)</code></td>
+<td style="text-align: left;"><code>[1, 34]</code></td>
+<td style="text-align: left;">Device update period in milliseconds.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Y-Axis Forces Handling</code></td>
+<td style="text-align: left;"><code>AUTO</code>, <code>ROTATE_TO_X</code></td>
+<td style="text-align: left;">How to handle Y-axis forces.</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
