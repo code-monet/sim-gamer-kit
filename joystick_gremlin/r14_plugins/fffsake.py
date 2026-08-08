@@ -334,7 +334,21 @@ def StartUp(plugin_options: PluginOptions) -> bool:
         err_msg = f"Device (no longer?) present:{plugin_options.device_selector.value}"
     guid = None
     activation_device = None
-    for d in fffsake.DetectFfbDevices():
+    global detected_devices
+    detected_devices = fffsake.DetectFfbDevices()
+    for d in detected_devices:
+        if d.is_virtual:
+            util.log(
+                f"vJoy device with GUID {d.guid} has {d.axes} axes, {d.buttons} buttons, {d.hats} hats. "
+                f"FFB on X axis: {'Yes' if d.x_is_ffb else 'No'}, Y axis: {'Yes' if d.y_is_ffb else 'No'}"
+            )
+            if not d.is_wheel:
+                util.log(
+                    f"vJoy device with GUID {d.guid} is not configured as a wheel, "
+                    "which will likely cause problems with racing games."
+                    "See FFFSake setup documentation for details."
+                )
+    for d in detected_devices:
         if not d.is_virtual and (
             use_first_device or d.name == plugin_options.device_selector.value
         ):

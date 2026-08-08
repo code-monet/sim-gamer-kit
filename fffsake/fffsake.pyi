@@ -144,6 +144,10 @@ class ExtendedDeviceInfo:
     def is_virtual(self) -> bool:
         """True if the device is a virtual vJoy device."""
 
+    @property
+    def is_wheel(self) -> bool:
+        """True if the device is a driving wheel."""
+
 class FfbEngineType(enum.Enum):
     """Specifies the type of force feedback engine to use."""
 
@@ -193,6 +197,14 @@ class FffsakeOptions:
 
 class GUID:
     def __init__(self) -> None: ...
+
+    def __eq__(self, arg: GUID, /) -> bool: ...
+
+    def __ne__(self, arg: GUID, /) -> bool: ...
+
+    def __str__(self) -> str: ...
+
+    def __repr__(self) -> str: ...
 
 def GetVersionMismatchMessage() -> str | None:
     """
