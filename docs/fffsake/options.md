@@ -72,8 +72,8 @@ See the [Game guides](../game_guides/index.md) for recommended settings.
 
 | Option | Values | Description |
 | :--- | :--- | :--- |
-| `Compatibility: Restore minimized forces` | `True`, `False` | When certain forces are unintentionally zero, this will unminimize them. |
-| `Compatibility: Force restart on update` | `True`, `False` | When the game expects certain forces to be restarted on each update. |
+| `Compatibility: Restore minimized forces` | `On`, `Off` | When certain forces are unintentionally zero, this will unminimize them. |
+| `Compatibility: Force restart on update` | `On`, `Off` | When the game expects certain forces to be restarted on each update. |
 
 ---
 

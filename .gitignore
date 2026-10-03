@@ -5,3 +5,6 @@ __pycache__/
 *.so
 .Python
 site/
+
+# Python Virtual Environments.
+.venv
