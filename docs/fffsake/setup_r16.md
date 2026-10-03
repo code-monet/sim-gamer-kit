@@ -1,4 +1,4 @@
-# FFFSake Setup with Joystick Gremlin R14+
+# FFFSake Setup with Joystick Gremlin R16
 
 Budget about 15 minutes for this one-time setup.
 
@@ -9,7 +9,7 @@ download them all:
     driver from
     [Brunner Innovation's fork on GitHub](https://github.com/BrunnerInnovation/vJoy/releases).
 2.  [Joystick Gremlin](https://github.com/WhiteMagic/JoystickGremlin/releases),
-    R14.3 or newer.
+    R16 or newer.
 3.  [Sim Gamer Kit](https://github.com/code-monet/sim-gamer-kit/releases)
 4.  (Strongly Recommended) [HidHide](https://github.com/nefarius/HidHide/releases),
     a kernel-mode filter driver to hide physical devices from games. You
@@ -39,7 +39,7 @@ Install and configure these:
     > Similarly, bind any FFB trigger buttons 1:1 (very few games use trigger buttons, though).
 
     2.   Switch to the `Scripts` tab. Use the `Add Script` button and browse to
-         the `joystick_gremlin\r14_plugins\fffsake.py` file,
+         the `joystick_gremlin\r16_plugins\fffsake_script.py` file,
          at the location you extracted Sim Gamer Kit to.
     3.   Once the plugin has been added, click on the cog wheel for the plugin to
          open its configuration. From the `FF Device` dropdown in
@@ -52,7 +52,7 @@ Install and configure these:
     5.   Bind a button for `Mute/Unmute Force Feedback`. Think of this as a safety cutoff
          button, to be pressed if you lose control of your FFB device. For this reason, use a button
          not on the FFB joystick/wheel rim. It doesn't need to be on the FFB device either.
-         Once done, the plugin page should look something like follows: ![FFFSake Plugin!](../resources/fffsake_gremlin_plugin_r14.png)
+         Once done, the plugin page should look something like follows: ![FFFSake Plugin!](../resources/fffsake_gremlin_plugin_r16.png)
     6.   Save the profile.
     7.   Close Joystick Gremlin for the next step.
 7.  Launch and
@@ -85,3 +85,5 @@ This is a lot of setup; if you made it this far, congratulations! You've
 enabled some really powerful tools for your sim gaming journey. I suggest starting
 with a single Joystick Gremlin profile and then branching out to more as you gain
 experience with these tools.
+
+The full help for FFFSake configuration options [is here](options.md).

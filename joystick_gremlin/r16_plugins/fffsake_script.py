@@ -1,6 +1,6 @@
-"""© 2025 Code Monet <code.monet@proton.me>
+"""© 2026 Code Monet <code.monet@proton.me>
 
-Joystick Gremlin R14+ plugin for FFFSake.
+Joystick Gremlin R16 plugin for FFFSake.
 """
 
 import inspect
@@ -83,8 +83,12 @@ def _user_notified():
     return carrier._fffsake_user_notified
 
 
-detected_devices = [d.name for d in fffsake.DetectFfbDevices() if not d.is_virtual]
-if not detected_devices and not _user_notified():
+detected_device_names = [
+    d.instance_info.instance_name
+    for d in fffsake.DetectFfbDevices()
+    if not fffsake.IsVjoyDevice(d)
+]
+if not detected_device_names and not _user_notified():
     signal.display_error(
         "FFFSake plugin inactive",
         "No FFB-capable devices; please connect/power on your FFB device."
@@ -94,7 +98,7 @@ option_device_selector = user_script.SelectionVariable(
     "FF Device",
     "Which device to send force feedback commands to.",
     is_optional=True,
-    option_list=[_FIRST_DEVICE_PLACEHOLDER] + detected_devices,
+    option_list=[_FIRST_DEVICE_PLACEHOLDER] + detected_device_names,
     default_index=0,
 )
 _WHEEL = "Wheel"
@@ -332,36 +336,36 @@ def StartUp(plugin_options: PluginOptions) -> bool:
     else:
         use_first_device = False
         err_msg = f"Device (no longer?) present:{plugin_options.device_selector.value}"
-    guid = None
+
     activation_device = None
-    global detected_devices
     detected_devices = fffsake.DetectFfbDevices()
     for d in detected_devices:
-        if d.is_virtual:
+        if fffsake.IsVjoyDevice(d):
             util.log(
-                f"vJoy device with GUID {d.guid} has {d.axes} axes, {d.buttons} buttons, {d.hats} hats. "
+                f"vJoy device with GUID {d.instance_info.guid_instance} has {d.capabilities.axes} axes, "
+                f"{d.capabilities.buttons} buttons, {d.capabilities.hats} hats. "
                 f"FFB on X axis: {'Yes' if d.x_is_ffb else 'No'}, Y axis: {'Yes' if d.y_is_ffb else 'No'}"
             )
-            if not d.is_wheel:
+            if not fffsake.IsWheelDevice(d):
                 util.log(
-                    f"vJoy device with GUID {d.guid} is not configured as a wheel, "
+                    f"vJoy device with GUID {d.instance_info.guid_instance} is not configured as a wheel, "
                     "which will likely cause problems with racing games."
                     "See FFFSake setup documentation for details."
                 )
     for d in detected_devices:
-        if not d.is_virtual and (
-            use_first_device or d.name == plugin_options.device_selector.value
+        if not fffsake.IsVjoyDevice(d) and (
+            use_first_device or d.instance_info.instance_name == plugin_options.device_selector.value
         ):
-            activation_device = d.name
-            guid = d.guid
+            activation_device = d
             break
     else:
         # util.display_error(err_msg)
         util.log(err_msg)
         return False
     util.log(
-        f"FFB Device selected: {activation_device}, with {d.axes} axes, {d.buttons} buttons, {d.hats} hats. "
-        f"FFB on X axis: {'Yes' if d.x_is_ffb else 'No'}, Y axis: {'Yes' if d.y_is_ffb else 'No'}"
+        f"FFB Device selected: {activation_device.instance_info.instance_name}, with {activation_device.capabilities.axes} axes, "
+        f"{activation_device.capabilities.buttons} buttons, {activation_device.capabilities.hats} hats. "
+        f"FFB on X axis: {'Yes' if activation_device.x_is_ffb else 'No'}, Y axis: {'Yes' if activation_device.y_is_ffb else 'No'}"
     )
 
     # Fix for effects being missed if they are issued before Gremlin
@@ -374,12 +378,18 @@ def StartUp(plugin_options: PluginOptions) -> bool:
             util.log(f"Couldn't re-acquire vJoy device {vjoy_device}, but should be okay to proceed: {e}")
 
     if plugin_options.engine_selector.value == _FORWARDER:
-        fffsake.RegisterFffsakeForwarder(guid)
+        fffsake.RegisterFffsakeForwarder(activation_device.instance_info.guid_instance)
     elif plugin_options.engine_selector.value == _REDUCER:
         if plugin_options.device_type_selector.value == _WHEEL:
-            fffsake.RegisterFffsakeReducer(guid, fffsake.UserReportedDeviceType.FFB_WHEEL)
+            fffsake.RegisterFffsakeReducer(
+                activation_device.instance_info.guid_instance, 
+                fffsake.UserReportedDeviceType.FFB_WHEEL
+            )
         elif plugin_options.device_type_selector.value == _JOYSTICK:
-            fffsake.RegisterFffsakeReducer(guid, fffsake.UserReportedDeviceType.FFB_JOYSTICK)
+            fffsake.RegisterFffsakeReducer(
+                activation_device.instance_info.guid_instance, 
+                fffsake.UserReportedDeviceType.FFB_JOYSTICK
+            )
         else:
             util.log(
                 f"FFFSake plugin: device type not known to plugin: {plugin_options.device_type_selector.value}"

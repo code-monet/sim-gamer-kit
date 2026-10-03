@@ -6,7 +6,7 @@ nav:
   - Home: index.md
   - FFFSake:
     - Overview: fffsake/index.md
-    - Setup (R14+): fffsake/setup_r14.md
+    - Setup (R16): fffsake/setup_r16.md
     - Configuration Options: fffsake/options.md
     - vJoy Configuration: fffsake/vjoy_configuration.md
   - IndirectInput: indirect_input/index.md

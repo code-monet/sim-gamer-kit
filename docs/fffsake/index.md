@@ -60,7 +60,7 @@ While there are other applications with similar functionality, feeding vJoy with
 inputs from DirectInput devices, none of them appear to be maintained by the time of
 this writing.
 [Joystick Gremlin](https://whitemagic.github.io/JoystickGremlin) is actively being
-developed; we will be using the latest R15 version.
+developed; we will be using the latest R16 version.
 
 Support could be added for other vJoy feeders, especially if someone is willing to
 help integrate `FFFSake` as a DLL or Python module into the feeder. Please get in touch
@@ -69,12 +69,10 @@ via
 
 ## Setup
 
-New users, and existing users on Joystick Gremlin R14.3 (or newer), follow
-[these instructions](setup_r14.md).
+Follow [these instructions](setup_r16.md) for the latest Gremlin release.
 
-If you must use a version older than R14.3
-(including R13), you'll have to
-[patch your Gremlin installation manually](setup_manual.md).
+> If you must use an older Gremlin version, you'll need to use a corresponding older version
+of Sim Gamer Kit as well.
 
 > Prior to R14.3, this doc recommened using my fork of Gremlin. I have stopped making releases
 from my fork as there's no longer a need to patch Gremlin.
@@ -155,8 +153,7 @@ See [vJoy configuration](./vjoy_configuration.md) to configure vJoy correctly.
 ### Common Issues Checklist
 
 1. Did you install the correct version of the vJoy driver? See [setup](#setup).
-2. Ensure you are using Joystick Gremlin >14.3 OR patching vanilla Gremlin with
-   the correct vJoy DLL; see [setup](#setup).
+2. Ensure you are using Joystick Gremlin R16 or newer.
 3. (Racing games) Ensure you are using my patched vJoy configuration tool and the
    [recommended configuration](./vjoy_configuration.md).
 4. Have you rebooted your computer at least once and confirmed the issue persists?
